@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Meta tags dinámicos - se llenan desde JSON -->
+    <title id="page-title">Landing Page Educativa</title>
+    <meta name="description" content="" id="meta-description">
+    <meta name="keywords" content="" id="meta-keywords">
+    <meta name="author" content="" id="meta-author">
+    <meta name="robots" content="index, follow" id="meta-robots">
+    <link rel="canonical" href="" id="canonical-url">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="" id="og-title">
+    <meta property="og:description" content="" id="og-description">
+    <meta property="og:image" content="" id="og-image">
+    <meta property="og:url" content="" id="og-url">
+    <meta property="og:site_name" content="Centro Universitario Paso Del Norte">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="" id="twitter-title">
+    <meta name="twitter:description" content="" id="twitter-description">
+    <meta name="twitter:image" content="" id="twitter-image">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../assets/styles.css">
+    
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+</head>
+<body>
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Hero Section with Form -->
+    <section class="hero" id="hero">
+        <div class="hero-overlay" id="form-contact">
+            <div class="hero-content">
+                <!-- Logo -->
+                <div class="logo">
+                    LOGO
+                </div>
+                
+                <!-- Hero Text -->
+                <div class="hero-text">
+                    <p class="hero-badge" id="hero-badge"></p>
+                    <h1 id="hero-title"></h1>
+                    <p class="hero-subtitle" id="hero-subtitle"></p>
+                </div>
+                
+                <!-- Lead Form -->
+                <div class="main-form">
+                    <div class="title-form" id="title-form"></div>
+                    <div class="lead-form-container">
+                        <!-- Overlay de carga -->
+                        <div class="loading-overlay" id="loading-overlay">
+                            <div class="loading-spinner"></div>
+                            <div class="loading-text">Espere por favor...</div>
+                        </div>
+                        
+                        <form class="lead-form" id="lead-form">
+                            <div class="form-row">
+                                <input type="text" id="nombre" placeholder="Nombre y apellido">
+                                <input type="tel" id="telefono" placeholder="Teléfono">
+                            </div>
+                            <div class="form-row">
+                                <input type="email" id="email" placeholder="Email">
+                                <select id="carrera">
+                                    <option value="">Carrera de Interés</option>
+                                </select>
+                            </div>
+                            <div class="main-button-submit">
+                                <button type="submit" class="whatsapp-btn">
+                                    <span class="whatsapp-icon">
+                                        <img src="../assets/images/icon-whatsapp.png" alt="Icon WhatsApp">
+                                    </span>
+                                    <span id="whatsapp-text"></span>
+                                </button>
+                                <div class="form-note" id="form-note"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credentials Section -->
+    <section class="credentials" id="credentials">
+        <div class="container">
+            <div class="credentials-content">
+                <h2 id="credentials-title"></h2>
+                <p id="credentials-subtitle"></p>
+                <div class="logos-container" id="logos-container">
+                    <!-- Logos will be populated by JavaScript -->
+                </div>
+            </div>
+            <div class="testimonials" id="testimonials">
+                <!-- Testimonials will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="benefits">
+        <div class="container">
+            <div class="benefits-grid" id="benefits-grid">
+                <!-- Benefits will be populated by JavaScript -->
+            </div>
+            <div class="cta-section">
+                <a id="benefits-cta" href="#form-contact" class="cta-button"></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p id="footer-text"></p>
+        </div>
+    </footer>
+    
+    <!-- Configuración de variables de entorno -->
+    <script src="/env-config.js"></script>
+    <script src="../config.js"></script>
+    
+    <!-- jQuery y Slick Carousel JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="../assets/script.js"></script>
+</body>
+</html>

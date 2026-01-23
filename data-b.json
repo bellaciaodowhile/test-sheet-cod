@@ -1,0 +1,123 @@
+{
+  "seo": {
+    "title": "Centro Universitario Paso Del Norte - Tu Futuro Profesional Online",
+    "description": "Tu Ingeniería o Licenciatura Online con Doble Respaldo Oficial. 0% Inscripción, 0% Reinscripción y colegiatura congelada desde el primer día.",
+    "keywords": "universidad online, educación superior, ingeniería online, licenciaturas online, RVOE, SEP, estudios universitarios, colegiatura congelada",
+    "author": "Centro Universitario Paso Del Norte",
+    "robots": "index, follow",
+    "canonical": "https://tudominio.com/landing-b",
+    "ogTitle": "Universidad Online con Doble Respaldo Oficial - CUPN",
+    "ogDescription": "La decisión inteligente: 0% Inscripción, 0% Reinscripción y garantía de colegiatura congelada desde el primer día.",
+    "ogImage": "https://tudominio.com/assets/images/og-image-b.jpg",
+    "ogUrl": "https://tudominio.com/landing-b",
+    "twitterTitle": "Universidad Online - Colegiatura Congelada - CUPN",
+    "twitterDescription": "Tu Ingeniería o Licenciatura Online con Doble Respaldo Oficial. Sin costos ocultos ni aumentos sorpresa.",
+    "twitterImage": "https://tudominio.com/assets/images/twitter-image-b.jpg"
+  },
+  "pageTitle": "Centro Universitario Paso Del Norte",
+  "logo": {
+    "image": "",
+    "alt": "Centro Universitario Paso Del Norte"
+  },
+  "hero": {
+    "badge": "Admisiones abiertas 2026",
+    "title": "Tu Ingeniería o Licenciatura Online <br> con Doble Respaldo Oficial.",
+    "subtitle": "La decisión inteligente: 0% Inscripción, 0% Reinscripción <br> y garantía de colegiatura congelada desde el primer día.",
+    "image": "https://via.placeholder.com/500x600/8e44ad/ffffff?text=Ejecutivo+Exitoso",
+    "imageAlt": "Ejecutivo profesional en oficina moderna",
+    "backgroundImage": "../assets/images/hero-b.webp"
+  },
+  "form": {
+    "titleForm": "Asegura tu lugar con $0 inicial:",
+    "buttonText": "Solicitar informes por Whatsapp",
+    "note": "*Sin plazos forzosos. Trámite directo.",
+    "careers": [
+      "Ingeniería Agroindustrial y de Alimentos",
+      "Ingeniería Ambiental y Diseño de Energías Renovables",
+      "Ingeniería Eléctrica",
+      "Ingeniería en Gestión Empresarial",
+      "Ingeniería Industrial",
+      "Ingeniería en Manufactura",
+      "Ingeniería en Seguridad Cibernética",
+      "Ingeniería en Sistemas",
+      "Licenciatura en Administración",
+      "Licenciatura en Contaduría Publica",
+      "Licenciatura en Derecho",
+      "Licenciatura en Diseño Grafico",
+      "Licenciatura en Interpretación del Arte",
+      "Licenciatura en Logística y Aduanas",
+      "Licenciatura en Mercadotecnia",
+      "Licenciatura en Recursos Humanos",
+      "Licenciatura en Turismo"
+    ]
+  },
+  "credentials": {
+    "title": "Tu título <br> con Doble Respaldo Oficial",
+    "subtitle": "Programas incorporados y validados ante la Federación (SEP) y el Gobierno del Estado.",
+    "logos": [
+      {
+        "image": "https://picsum.photos/60/40?random=10",
+        "alt": "AACSB International Accreditation"
+      },
+      {
+        "image": "https://picsum.photos/60/40?random=11",
+        "alt": "Harvard Business School Partner"
+      },
+      {
+        "image": "https://picsum.photos/60/40?random=12",
+        "alt": "Wharton School Alliance"
+      },
+      {
+        "image": "https://picsum.photos/60/40?random=13",
+        "alt": "MIT Partnership"
+      },
+      {
+        "image": "https://picsum.photos/60/40?random=14",
+        "alt": "Stanford Alliance"
+      }
+    ]
+  },
+  "testimonials": [
+    {
+      "name": "Roberto G., Ing. Industrial.",
+      "quote": "Rolando turnos no puedo entrar a clases. Aquí bajo mis guías, subo la tarea y listo. Ya soy Supervisor.",
+      "backgroundImage": "https://picsum.photos/255/354?random=1"
+    },
+    {
+      "name": "Ana P., Lic. en Logística.",
+      "quote": "Sin video llamadas eternas. Todo está en la plataforma: descargo el módulo, resuelvo y lo cargo. Rápido y práctivo.",
+      "backgroundImage": "https://picsum.photos/255/354?random=2"
+    },
+    {
+      "name": "Lucía R., Administración.",
+      "quote": "Buscaba validez, no recre. Completé mis módulos y obtuve mi título con RVOE sin perder tiempo. 100% autodidacta.",
+      "backgroundImage": "https://picsum.photos/255/354?random=3"
+    },
+    {
+      "name": "Roberto G., Ing. Industrial.",
+      "quote": "Rolando turnos no puedo entrar a clases. Aquí bajo mis guías, subo la tarea y listo. Ya soy Supervisor.",
+      "backgroundImage": "https://picsum.photos/255/354?random=4"
+    }
+  ],
+  "benefits": [
+    {
+      "icon": "",
+      "title": "Certeza Legal <br> Garantizada",
+      "description": "No somos una 'escuela patito'. Tenemos RVOE Federal y Estatal visible y verificable. Estudia con la paz menta de que tu esfuerzo vale."
+    },
+    {
+      "icon": "",
+      "title": "Ahorro<br> Inteligente.",
+      "description": "Ahórrate la inscripción y reinscripción. Sin costos ocultos ni aumentos sorpresa. Tu colegiatura se congela durante toda tu carrera."
+    },
+    {
+      "icon": "",
+      "title": "100% Online<br> y Flexible.",
+      "description": "Sin gastos de transporte, libros caros ni horarios fijos. Todo está en la plataforma digital lista para usarse desde tu celular."
+    }
+  ],
+  "benefitsCta": "Empezar solicitud arriba",
+  "footer": {
+    "text": "Copyright © 2024 CUPN. | Aviso de Privacidad"
+  }
+}
