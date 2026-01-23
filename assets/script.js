@@ -328,11 +328,13 @@ function populatePage(data) {
         const logosContainer = document.getElementById('logos-container');
         if (logosContainer && data.credentials && data.credentials.logos) {
             logosContainer.innerHTML = '';
-            data.credentials.logos.forEach(logo => {
+            data.credentials.logos.forEach((logo, index) => {
                 const logoImg = document.createElement('img');
                 logoImg.src = logo.image;
                 logoImg.alt = logo.alt;
                 logoImg.className = 'credential-logo';
+                logoImg.setAttribute('role', 'listitem');
+                logoImg.setAttribute('tabindex', '0');
                 logosContainer.appendChild(logoImg);
             });
         }
@@ -344,6 +346,9 @@ function populatePage(data) {
             data.testimonials.forEach((testimonial, index) => {
                 const testimonialItem = document.createElement('div');
                 testimonialItem.className = `testimonial-item testimonial-${index + 1}`;
+                testimonialItem.setAttribute('role', 'listitem');
+                testimonialItem.setAttribute('tabindex', '0');
+                testimonialItem.setAttribute('aria-label', `Testimonio de ${testimonial.name}: ${testimonial.quote}`);
                 
                 // Aplicar imagen de fondo si existe
                 if (testimonial.backgroundImage) {
@@ -355,8 +360,8 @@ function populatePage(data) {
                 
                 testimonialItem.innerHTML = `
                     <div class="testimonial-content">
-                        <div class="testimonial-cite">"${testimonial.quote}"</div>
-                        <div class="testimonial-name">${testimonial.name}</div>
+                        <div class="testimonial-cite" role="text">"${testimonial.quote}"</div>
+                        <div class="testimonial-name" role="text">${testimonial.name}</div>
                     </div>
                 `;
                 testimonialsContainer.appendChild(testimonialItem);
@@ -398,11 +403,13 @@ function populatePage(data) {
         const benefitsGrid = document.getElementById('benefits-grid');
         if (benefitsGrid && data.benefits) {
             benefitsGrid.innerHTML = '';
-            data.benefits.forEach(benefit => {
+            data.benefits.forEach((benefit, index) => {
                 const benefitCard = document.createElement('div');
                 benefitCard.className = 'benefit-card';
+                benefitCard.setAttribute('role', 'listitem');
+                benefitCard.setAttribute('tabindex', '0');
                 benefitCard.innerHTML = `
-                    <div class="benefit-icon">${benefit.icon}</div>
+                    <div class="benefit-icon" aria-hidden="true">${benefit.icon}</div>
                     <h3>${benefit.title}</h3>
                     <p>${benefit.description}</p>
                 `;
@@ -549,7 +556,7 @@ function setupPhoneValidation() {
     const phoneInput = document.getElementById('telefono');
     if (!phoneInput) return;
     
-    // Permitir solo números
+    // Permitir solo números en la entrada, pero NO bloquear pegado
     phoneInput.addEventListener('input', function(e) {
         // Remover todo lo que no sea número
         let value = e.target.value.replace(/\D/g, '');
@@ -563,31 +570,20 @@ function setupPhoneValidation() {
         e.target.value = value;
     });
     
-    // Prevenir pegar texto no numérico
-    phoneInput.addEventListener('paste', function(e) {
-        e.preventDefault();
-        let paste = (e.clipboardData || window.clipboardData).getData('text');
-        let numericPaste = paste.replace(/\D/g, '');
-        if (numericPaste.length > 10) {
-            numericPaste = numericPaste.slice(0, 10);
-        }
-        e.target.value = numericPaste;
-    });
+    // Permitir pegado normal - NO bloquear
+    // Los gestores de contraseñas y la experiencia del usuario lo requieren
     
-    // Prevenir teclas no numéricas (excepto backspace, delete, tab, etc.)
+    // Solo prevenir teclas no numéricas en el teclado (pero permitir navegación)
     phoneInput.addEventListener('keydown', function(e) {
-        // Permitir: backspace, delete, tab, escape, enter
-        if ([8, 9, 27, 13, 46].indexOf(e.keyCode) !== -1 ||
-            // Permitir: Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
-            (e.keyCode === 65 && e.ctrlKey === true) ||
-            (e.keyCode === 67 && e.ctrlKey === true) ||
-            (e.keyCode === 86 && e.ctrlKey === true) ||
-            (e.keyCode === 88 && e.ctrlKey === true) ||
-            // Permitir: home, end, left, right
-            (e.keyCode >= 35 && e.keyCode <= 39)) {
+        // Permitir: backspace, delete, tab, escape, enter, home, end, left, right
+        if ([8, 9, 27, 13, 46, 35, 36, 37, 39].indexOf(e.keyCode) !== -1 ||
+            // Permitir: Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X, Ctrl+Z
+            (e.ctrlKey === true && [65, 67, 86, 88, 90].indexOf(e.keyCode) !== -1) ||
+            // Permitir: F5, F12 (para desarrolladores)
+            (e.keyCode >= 112 && e.keyCode <= 123)) {
             return;
         }
-        // Asegurar que es un número y parar el keypress
+        // Solo prevenir si es una tecla no numérica (pero permitir pegado)
         if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
             e.preventDefault();
         }

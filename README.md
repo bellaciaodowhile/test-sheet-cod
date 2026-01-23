@@ -85,7 +85,7 @@ export WHATSAPP_NUMBER="1234567890"
 ├── landing-b/            # Landing Page B
 │   └── index.html
 ├── assets/               # Recursos compartidos
-│   ├── script.js         # JavaScript principal
+│   ├── script.min.js     # JavaScript principal (minificado)
 │   ├── styles.css        # Estilos CSS
 │   └── images/           # Imágenes
 ├── data-a.json           # Datos para Landing A

@@ -42,7 +42,7 @@
 ### Método 2: Sin Servidor
 1. **Edita `data-a.json`** con tu contenido
 2. **Copia el contenido** del JSON
-3. **Pégalo en la función `loadFallbackData()`** en `script.js`
+3. **Pégalo en la función `loadFallbackData()`** en `script.min.js`
 4. **Abre `index.html`** directamente
 
 ## 🔧 Cambios Mantenidos

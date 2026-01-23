@@ -44,49 +44,61 @@
 </head>
 <body>
     <!-- Toast Container -->
-    <div class="toast-container" id="toast-container"></div>
+    <div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="true"></div>
 
     <!-- Hero Section with Form -->
-    <section class="hero" id="hero">
+    <main class="hero" id="hero" role="main">
         <div class="hero-overlay" id="form-contact">
             <div class="hero-content">
                 <!-- Logo -->
-                <div class="logo">
+                <header class="logo" role="banner">
                     LOGO
-                </div>
+                </header>
                 
                 <!-- Hero Text -->
-                <div class="hero-text">
+                <section class="hero-text">
                     <p class="hero-badge" id="hero-badge"></p>
                     <h1 id="hero-title"></h1>
                     <p class="hero-subtitle" id="hero-subtitle"></p>
-                </div>
+                </section>
                 
                 <!-- Lead Form -->
-                <div class="main-form">
-                    <div class="title-form" id="title-form"></div>
+                <section class="main-form" role="form" aria-labelledby="title-form">
+                    <h2 class="title-form" id="title-form"></h2>
                     <div class="lead-form-container">
                         <!-- Overlay de carga -->
-                        <div class="loading-overlay" id="loading-overlay">
-                            <div class="loading-spinner"></div>
+                        <div class="loading-overlay" id="loading-overlay" aria-hidden="true">
+                            <div class="loading-spinner" role="status" aria-label="Cargando"></div>
                             <div class="loading-text">Espere por favor...</div>
                         </div>
                         
-                        <form class="lead-form" id="lead-form">
+                        <form class="lead-form" id="lead-form" novalidate>
                             <div class="form-row">
-                                <input type="text" id="nombre" placeholder="Nombre y apellido">
-                                <input type="tel" id="telefono" placeholder="Teléfono">
+                                <div class="input-group">
+                                    <label for="nombre" class="sr-only">Nombre y apellido</label>
+                                    <input type="text" id="nombre" name="nombre" placeholder="Nombre y apellido" required aria-required="true">
+                                </div>
+                                <div class="input-group">
+                                    <label for="telefono" class="sr-only">Teléfono</label>
+                                    <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required aria-required="true" inputmode="numeric">
+                                </div>
                             </div>
                             <div class="form-row">
-                                <input type="email" id="email" placeholder="Email">
-                                <select id="carrera">
-                                    <option value="">Carrera de Interés</option>
-                                </select>
+                                <div class="input-group">
+                                    <label for="email" class="sr-only">Correo electrónico</label>
+                                    <input type="email" id="email" name="email" placeholder="Email" required aria-required="true" inputmode="email">
+                                </div>
+                                <div class="input-group">
+                                    <label for="carrera" class="sr-only">Carrera de interés</label>
+                                    <select id="carrera" name="carrera" required aria-required="true">
+                                        <option value="">Carrera de Interés</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="main-button-submit">
-                                <button type="submit" class="whatsapp-btn">
-                                    <span class="whatsapp-icon">
-                                        <img src="../assets/images/icon-whatsapp.png" alt="Icon WhatsApp">
+                                <button type="submit" class="whatsapp-btn" aria-describedby="form-note">
+                                    <span class="whatsapp-icon" aria-hidden="true">
+                                        <img src="../assets/images/icon-whatsapp.png" alt="" role="presentation">
                                     </span>
                                     <span id="whatsapp-text"></span>
                                 </button>
@@ -94,41 +106,42 @@
                             </div>
                         </form>
                     </div>
-                </div>
+                </section>
             </div>
         </div>
-    </section>
+    </main>
 
     <!-- Credentials Section -->
-    <section class="credentials" id="credentials">
+    <section class="credentials" id="credentials" role="region" aria-labelledby="credentials-title">
         <div class="container">
             <div class="credentials-content">
                 <h2 id="credentials-title"></h2>
                 <p id="credentials-subtitle"></p>
-                <div class="logos-container" id="logos-container">
+                <div class="logos-container" id="logos-container" role="list" aria-label="Certificaciones y acreditaciones">
                     <!-- Logos will be populated by JavaScript -->
                 </div>
             </div>
-            <div class="testimonials" id="testimonials">
+            <div class="testimonials" id="testimonials" role="region" aria-label="Testimonios de estudiantes">
                 <!-- Testimonials will be populated by JavaScript -->
             </div>
         </div>
     </section>
 
     <!-- Benefits Section -->
-    <section class="benefits" id="benefits">
+    <section class="benefits" id="benefits" role="region" aria-labelledby="benefits-heading">
         <div class="container">
-            <div class="benefits-grid" id="benefits-grid">
+            <h2 id="benefits-heading" class="sr-only">Beneficios de estudiar con nosotros</h2>
+            <div class="benefits-grid" id="benefits-grid" role="list">
                 <!-- Benefits will be populated by JavaScript -->
             </div>
             <div class="cta-section">
-                <a id="benefits-cta" href="#form-contact" class="cta-button"></a>
+                <a id="benefits-cta" href="#form-contact" class="cta-button" role="button"></a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <p id="footer-text"></p>
         </div>
@@ -142,6 +155,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     
-    <script src="../assets/script.js"></script>
+    <script src="../assets/script.min.js"></script>
 </body>
 </html>

@@ -113,7 +113,7 @@ Tu proyecto debería tener esta estructura:
 ├── api/
 │   └── config.js          # ✅ Función serverless
 ├── assets/
-│   ├── script.js          # ✅ JavaScript principal
+│   ├── script.min.js      # ✅ JavaScript principal (minificado)
 │   ├── styles.css         # ✅ Estilos
 │   └── images/            # ✅ Imágenes
 ├── landing-a/
