@@ -4,7 +4,7 @@
   "description": "Landing page educativa con integración a Google Sheets y WhatsApp",
   "main": "index.html",
   "scripts": {
-    "build": "echo 'No build required for static site'",
+    "build": "echo 'Static site ready'",
     "dev": "vercel dev"
   },
   "keywords": [
@@ -14,5 +14,6 @@
     "whatsapp"
   ],
   "author": "Centro Universitario",
-  "license": "MIT"
+  "license": "MIT",
+  "type": "module"
 }
