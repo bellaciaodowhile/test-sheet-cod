@@ -1,0 +1,32 @@
+# Archivos que Vercel debe ignorar durante el deploy
+
+# Archivos de desarrollo
+.env.example
+README.md
+VERCEL-DEPLOY.md
+SEO-STRUCTURE.md
+INSTRUCCIONES.md
+
+# Archivos de configuración local
+.env
+.env.local
+
+# Archivos PHP (no necesarios en Vercel)
+env-loader.php
+*.php
+
+# Archivos de Apache (no necesarios en Vercel)
+.htaccess
+
+# Archivos temporales
+*.tmp
+*.temp
+.cache/
+
+# Logs
+*.log
+logs/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db

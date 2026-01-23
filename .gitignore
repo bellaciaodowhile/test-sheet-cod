@@ -47,11 +47,12 @@ node_modules/
 vendor/
 bower_components/
 
-# Archivos de build
+# Archivos de build y deploy
 dist/
 build/
 .next/
 .nuxt/
+.vercel/
 
 # Archivos de backup
 *.bak
