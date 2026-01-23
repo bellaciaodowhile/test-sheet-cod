@@ -1,44 +1,13 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "api/config.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "**/*.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "**/*.css",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "**/*.js",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "**/*.json",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "**/*.{png,jpg,jpeg,gif,svg,webp,ico}",
-      "use": "@vercel/static"
-    }
-  ],
   "functions": {
     "api/config.js": {
       "runtime": "@vercel/node@18"
     }
   },
-  "routes": [
+  "rewrites": [
     {
-      "src": "/env-config.js",
-      "dest": "/api/config"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "source": "/env-config.js",
+      "destination": "/api/config"
     }
   ],
   "headers": [
