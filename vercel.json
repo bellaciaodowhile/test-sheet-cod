@@ -1,7 +1,4 @@
 {
-  "functions": {
-    "api/*.js": {}
-  },
   "rewrites": [
     {
       "source": "/env-config.js",
