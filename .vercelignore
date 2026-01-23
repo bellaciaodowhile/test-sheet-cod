@@ -6,14 +6,15 @@ README.md
 VERCEL-DEPLOY.md
 SEO-STRUCTURE.md
 INSTRUCCIONES.md
+VERCEL-TROUBLESHOOTING.md
 
 # Archivos de configuración local
 .env
 .env.local
 
-# Archivos PHP (no necesarios en Vercel)
-env-loader.php
+# Archivos PHP (no compatibles con Vercel)
 *.php
+env-loader.php
 
 # Archivos de Apache (no necesarios en Vercel)
 .htaccess
