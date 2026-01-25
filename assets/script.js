@@ -333,8 +333,11 @@ function populatePage(data) {
                 logoImg.src = logo.image;
                 logoImg.alt = logo.alt;
                 logoImg.className = 'credential-logo';
-                logoImg.setAttribute('role', 'listitem');
-                logoImg.setAttribute('tabindex', '0');
+                logoImg.width = 60;
+                logoImg.height = 40;
+                logoImg.style.width = '60px';
+                logoImg.style.height = '40px';
+                logoImg.style.objectFit = 'contain';
                 logosContainer.appendChild(logoImg);
             });
         }
@@ -346,9 +349,6 @@ function populatePage(data) {
             data.testimonials.forEach((testimonial, index) => {
                 const testimonialItem = document.createElement('div');
                 testimonialItem.className = `testimonial-item testimonial-${index + 1}`;
-                testimonialItem.setAttribute('role', 'listitem');
-                testimonialItem.setAttribute('tabindex', '0');
-                testimonialItem.setAttribute('aria-label', `Testimonio de ${testimonial.name}: ${testimonial.quote}`);
                 
                 // Aplicar imagen de fondo si existe
                 if (testimonial.backgroundImage) {
@@ -360,8 +360,8 @@ function populatePage(data) {
                 
                 testimonialItem.innerHTML = `
                     <div class="testimonial-content">
-                        <div class="testimonial-cite" role="text">"${testimonial.quote}"</div>
-                        <div class="testimonial-name" role="text">${testimonial.name}</div>
+                        <div class="testimonial-cite">"${testimonial.quote}"</div>
+                        <div class="testimonial-name">${testimonial.name}</div>
                     </div>
                 `;
                 testimonialsContainer.appendChild(testimonialItem);
@@ -378,6 +378,10 @@ function populatePage(data) {
                         infinite: true,
                         arrows: false,
                         dots: true,
+                        accessibility: true,
+                        focusOnSelect: false,
+                        swipe: true,
+                        touchMove: true,
                         responsive: [
                             {
                                 breakpoint: 1024,
@@ -395,6 +399,35 @@ function populatePage(data) {
                             }
                         ]
                     });
+                    
+                    // Corregir problemas de accesibilidad de Slick
+                    setTimeout(() => {
+                        // Remover tabindex de elementos con aria-hidden="true"
+                        $('#testimonials .slick-slide[aria-hidden="true"]').removeAttr('tabindex');
+                        $('#testimonials .slick-slide[aria-hidden="true"] *').removeAttr('tabindex');
+                        
+                        // Asegurar que solo los slides visibles sean accesibles
+                        $('#testimonials .slick-slide[aria-hidden="false"]').attr('tabindex', '0');
+                        
+                        // Remover elementos focusables de slides ocultos
+                        $('#testimonials .slick-slide[aria-hidden="true"]').find('button, a, input, select, textarea, [tabindex]').attr('tabindex', '-1');
+                        
+                        // Restaurar elementos focusables en slides visibles
+                        $('#testimonials .slick-slide[aria-hidden="false"]').find('button, a, input, select, textarea').removeAttr('tabindex');
+                        
+                        // Agregar evento para manejar cambios de slide
+                        $('#testimonials').on('afterChange', function(event, slick, currentSlide) {
+                            // Actualizar accesibilidad después de cada cambio
+                            setTimeout(() => {
+                                $('#testimonials .slick-slide[aria-hidden="true"]').removeAttr('tabindex');
+                                $('#testimonials .slick-slide[aria-hidden="true"] *').removeAttr('tabindex');
+                                $('#testimonials .slick-slide[aria-hidden="true"]').find('button, a, input, select, textarea, [tabindex]').attr('tabindex', '-1');
+                                
+                                $('#testimonials .slick-slide[aria-hidden="false"]').attr('tabindex', '0');
+                                $('#testimonials .slick-slide[aria-hidden="false"]').find('button, a, input, select, textarea').removeAttr('tabindex');
+                            }, 50);
+                        });
+                    }, 100);
                 }
             }, 100);
         }
@@ -406,8 +439,6 @@ function populatePage(data) {
             data.benefits.forEach((benefit, index) => {
                 const benefitCard = document.createElement('div');
                 benefitCard.className = 'benefit-card';
-                benefitCard.setAttribute('role', 'listitem');
-                benefitCard.setAttribute('tabindex', '0');
                 benefitCard.innerHTML = `
                     <div class="benefit-icon" aria-hidden="true">${benefit.icon}</div>
                     <h3>${benefit.title}</h3>
@@ -551,12 +582,12 @@ function clearAllToasts() {
     }
 }
 
-// Función para validar número de teléfono (solo números, sin formato)
+// Función para validar número de teléfono (solo números, sin restricciones de pegado)
 function setupPhoneValidation() {
     const phoneInput = document.getElementById('telefono');
     if (!phoneInput) return;
     
-    // Permitir solo números en la entrada, pero NO bloquear pegado
+    // Solo validar en el evento input - NO bloquear pegado ni teclas
     phoneInput.addEventListener('input', function(e) {
         // Remover todo lo que no sea número
         let value = e.target.value.replace(/\D/g, '');
@@ -570,24 +601,8 @@ function setupPhoneValidation() {
         e.target.value = value;
     });
     
-    // Permitir pegado normal - NO bloquear
-    // Los gestores de contraseñas y la experiencia del usuario lo requieren
-    
-    // Solo prevenir teclas no numéricas en el teclado (pero permitir navegación)
-    phoneInput.addEventListener('keydown', function(e) {
-        // Permitir: backspace, delete, tab, escape, enter, home, end, left, right
-        if ([8, 9, 27, 13, 46, 35, 36, 37, 39].indexOf(e.keyCode) !== -1 ||
-            // Permitir: Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X, Ctrl+Z
-            (e.ctrlKey === true && [65, 67, 86, 88, 90].indexOf(e.keyCode) !== -1) ||
-            // Permitir: F5, F12 (para desarrolladores)
-            (e.keyCode >= 112 && e.keyCode <= 123)) {
-            return;
-        }
-        // Solo prevenir si es una tecla no numérica (pero permitir pegado)
-        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-            e.preventDefault();
-        }
-    });
+    // NO hay restricciones de pegado ni teclas - experiencia de usuario completa
+    console.log('📱 Validación de teléfono configurada - pegado habilitado');
 }
 
 // Función para añadir animaciones a los elementos cuando aparecen en pantalla
