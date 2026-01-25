@@ -751,10 +751,12 @@ async function saveToGoogleSheets(datosFormulario) {
         
         if (!APPS_SCRIPT_URL) {
             console.error('❌ URL de Google Apps Script no configurada');
+            console.error('🔧 Verifica que APPS_SCRIPT_URL esté en las variables de entorno de Vercel');
             return false;
         }
         
-        window.safeLog('📤 Enviando datos a Google Sheets:', datosFormulario);
+        console.log('📤 Enviando datos a Google Sheets:', datosFormulario);
+        console.log('🔗 URL de Apps Script:', APPS_SCRIPT_URL.substring(0, 50) + '...');
         
         // Crear URL con parámetros para GET (evita CORS en Apps Script)
         const params = new URLSearchParams({
@@ -771,35 +773,68 @@ async function saveToGoogleSheets(datosFormulario) {
         });
         
         const urlWithParams = `${APPS_SCRIPT_URL}?${params.toString()}`;
-        window.safeLog('🔗 Enviando GET a Google Sheets');
+        console.log('🔗 Enviando GET a Google Sheets');
         
-        // Usar GET con no-cors mode para evitar problemas de CORS
-        const response = await fetch(urlWithParams, {
-            method: 'GET',
-            mode: 'no-cors',
-            redirect: 'follow'
-        });
-        
-        window.safeLog('📥 Respuesta recibida (no-cors):', response);
-        
-        // En modo no-cors, no podemos leer la respuesta, pero si no hay error, asumimos éxito
-        console.log('✅ Petición enviada exitosamente (modo no-cors)');
-        
-        // Esperar un momento para que se procese en el servidor
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        
-        return true;
+        // Intentar primero con modo cors para obtener respuesta real
+        try {
+            const corsResponse = await fetch(urlWithParams, {
+                method: 'GET',
+                mode: 'cors',
+                redirect: 'follow',
+                headers: {
+                    'Accept': 'application/json,text/plain,*/*'
+                }
+            });
+            
+            console.log('📥 Respuesta CORS recibida:', corsResponse.status);
+            
+            if (corsResponse.ok) {
+                const responseText = await corsResponse.text();
+                console.log('✅ Respuesta del servidor:', responseText);
+                return true;
+            } else {
+                console.warn('⚠️ Respuesta CORS no exitosa, intentando con no-cors...');
+                throw new Error('CORS failed, trying no-cors');
+            }
+            
+        } catch (corsError) {
+            console.log('⚠️ CORS falló, usando no-cors como fallback:', corsError.message);
+            
+            // Fallback a no-cors
+            const response = await fetch(urlWithParams, {
+                method: 'GET',
+                mode: 'no-cors',
+                redirect: 'follow'
+            });
+            
+            console.log('📥 Respuesta no-cors recibida:', response);
+            
+            // En modo no-cors, no podemos leer la respuesta, pero si no hay error, asumimos éxito
+            console.log('✅ Petición enviada exitosamente (modo no-cors)');
+            
+            // Esperar un momento para que se procese en el servidor
+            await new Promise(resolve => setTimeout(resolve, 3000));
+            
+            return true;
+        }
         
     } catch (error) {
         console.error('❌ Error enviando a Google Sheets:', error);
+        console.error('🔍 Detalles del error:', {
+            message: error.message,
+            stack: error.stack,
+            name: error.name
+        });
         
         // Si es un error de red pero la petición se envió, podría haber funcionado
-        if (error.message.includes('Failed to fetch') || error.message.includes('network')) {
-            window.safeLog('⚠️ Error de red, pero la petición pudo haberse enviado');
-            window.safeLog('🔄 Esperando 2 segundos para verificar...');
+        if (error.message.includes('Failed to fetch') || 
+            error.message.includes('network') || 
+            error.message.includes('NetworkError')) {
+            console.log('⚠️ Error de red, pero la petición pudo haberse enviado');
+            console.log('🔄 Esperando 3 segundos para verificar...');
             
             // Esperar un poco y asumir éxito
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            await new Promise(resolve => setTimeout(resolve, 3000));
             
             console.log('✅ Asumiendo éxito después de espera');
             return true;
