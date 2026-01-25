@@ -852,14 +852,9 @@ function handleLeadForm() {
                 console.log('✅ Datos guardados exitosamente en Google Sheets');
                 
                 // Solo si se guardó exitosamente, proceder con WhatsApp
-                const mensaje = `Hola! Me interesa información sobre:
-        
-Nombre: ${nombre}
-Teléfono: ${telefono}
-Email: ${email}
-Carrera de interés: ${carrera}
-
-Por favor, envíenme más información.`;
+                const mensaje = `Hola! Soy ${nombre},
+Me gustaría saber más sobre la carrera de ${carrera}.
+Para recibir la información completa, les dejo mi contacto: 📧 ${email} 📱 ${telefono}`;
                 
                 // Abrir WhatsApp con el mensaje
                 const whatsappNumber = window.CONFIG?.WHATSAPP_NUMBER || '1234567890';
