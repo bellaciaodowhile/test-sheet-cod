@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Meta tags dinámicos - se llenan desde JSON -->
+    <title id="page-title">Landing Page Educativa</title>
+    <meta name="description" content="" id="meta-description">
+    <meta name="keywords" content="" id="meta-keywords">
+    <meta name="author" content="" id="meta-author">
+    <meta name="robots" content="index, follow" id="meta-robots">
+    <link rel="canonical" href="" id="canonical-url">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="" id="og-title">
+    <meta property="og:description" content="" id="og-description">
+    <meta property="og:image" content="" id="og-image">
+    <meta property="og:url" content="" id="og-url">
+    <meta property="og:site_name" content="Centro Universitario Paso Del Norte">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="" id="twitter-title">
+    <meta name="twitter:description" content="" id="twitter-description">
+    <meta name="twitter:image" content="" id="twitter-image">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
+    <link rel="apple-touch-icon" href="./assets/images/apple-touch-icon.png">
+    
+    <!-- Preload recursos críticos -->
+    <link rel="preload" href="./assets/styles.min.css" as="style">
+    <link rel="preload" href="./assets/script.min.js" as="script">
+    <link rel="preload" href="./data.json" as="fetch" crossorigin>
+    <link rel="preload" href="https://code.jquery.com/jquery-3.6.0.min.js" as="script">
+    
+    <!-- Fuentes de sistema como fallback inmediato -->
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        .fonts-loaded body {
+            font-family: "Open Sans", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+    </style>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="./assets/styles.min.css">
+    
+    <!-- Google Fonts completamente asíncrono -->
+    <script>
+        (function() {
+            const link = document.createElement('link');
+            link.href = 'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap';
+            link.rel = 'stylesheet';
+            link.onload = function() {
+                document.documentElement.classList.add('fonts-loaded');
+            };
+            link.onerror = function() {
+                console.warn('Google Fonts failed to load, using system fonts');
+            };
+            document.head.appendChild(link);
+        })();
+    </script>
+    
+    <!-- Scripts críticos con defer -->
+    <script>
+        // Configuración inline para evitar solicitud HTTP adicional
+        function getConfig() {
+            const isDevelopment = window.location.hostname === 'localhost' || 
+                                 window.location.hostname === '127.0.0.1' ||
+                                 window.location.hostname.includes('localhost') ||
+                                 window.location.port !== '';
+            
+            if (window.ENV) {
+                return window.ENV;
+            }
+            
+            if (isDevelopment) {
+                return {
+                    APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbyZb8ZZNE6DdWXkM8h7LlRhcjnkawFA34CK_HDezy2ZK55CdMQ9j21bhVtGnq0cby4z/exec',
+                    WHATSAPP_NUMBER: '1232132121',
+                    API_TIMEOUT: 10000,
+                    DEBUG_MODE: true
+                };
+            } else {
+                return {
+                    APPS_SCRIPT_URL: '',
+                    WHATSAPP_NUMBER: '1234567890',
+                    API_TIMEOUT: 10000,
+                    DEBUG_MODE: false
+                };
+            }
+        }
+        
+        function initializeConfig() {
+            if (!window.CONFIG) {
+                window.CONFIG = getConfig();
+            }
+        }
+        
+        window.safeLog = function(message, data = null) {
+            if (window.CONFIG?.DEBUG_MODE) {
+                if (data) {
+                    console.log(message, data);
+                } else {
+                    console.log(message);
+                }
+            }
+        };
+        
+        initializeConfig();
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer></script>
+    <script src="./assets/script.min.js" defer></script>
+    
+    <!-- Slick Carousel CSS - Carga asíncrona -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    </noscript>
+</head>
+<body>
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Hero Section with Form -->
+    <main class="hero" id="hero" role="main">
+        <div class="hero-overlay" id="form-contact">
+            <div class="hero-content">
+                <!-- Logo -->
+                <header class="logo" role="banner">
+                    <img id="logo-img" src="" alt="" width="100%" height="100%">
+                </header>
+                
+                <!-- Hero Text -->
+                <section class="hero-text">
+                    <p class="hero-badge" id="hero-badge"></p>
+                    <h1 id="hero-title"></h1>
+                    <p class="hero-subtitle" id="hero-subtitle"></p>
+                </section>
+                
+                <!-- Lead Form -->
+                <section class="main-form" role="form" aria-labelledby="title-form">
+                    <h2 class="title-form" id="title-form"></h2>
+                    <div class="lead-form-container">
+                        <!-- Overlay de carga -->
+                        <div class="loading-overlay" id="loading-overlay" aria-hidden="true">
+                            <div class="loading-spinner" role="status" aria-label="Cargando"></div>
+                            <div class="loading-text">Espere por favor...</div>
+                        </div>
+                        
+                        <form class="lead-form" id="lead-form" novalidate>
+                            <!-- Campos ocultos para parámetros UTM -->
+                            <input type="hidden" id="utm_source" name="utm_source" value="">
+                            <input type="hidden" id="utm_medium" name="utm_medium" value="">
+                            <input type="hidden" id="utm_campaign" name="utm_campaign" value="">
+                            
+                            <div class="form-row">
+                                <div class="input-group">
+                                    <label for="nombre" class="sr-only">Nombre y apellido</label>
+                                    <input type="text" id="nombre" name="nombre" placeholder="Nombre y apellido" required aria-required="true">
+                                </div>
+                                <div class="input-group">
+                                    <label for="telefono" class="sr-only">Teléfono</label>
+                                    <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required aria-required="true" inputmode="numeric">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="input-group">
+                                    <label for="email" class="sr-only">Correo electrónico</label>
+                                    <input type="email" id="email" name="email" placeholder="Email" required aria-required="true" inputmode="email">
+                                </div>
+                                <div class="input-group">
+                                    <label for="carrera" class="sr-only">Carrera de interés</label>
+                                    <select id="carrera" name="carrera" required aria-required="true">
+                                        <option value="">Carrera de Interés</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="main-button-submit">
+                                <button type="submit" class="whatsapp-btn" aria-describedby="form-note">
+                                    <span class="whatsapp-icon" aria-hidden="true">
+                                        <img src="./assets/images/icon-whatsapp.webp" width="100%" height="100%" alt="Icon Whatsapp" role="presentation">
+                                    </span>
+                                    <span id="whatsapp-text"></span>
+                                </button>
+                                <div class="form-note" id="form-note"></div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Credentials Section -->
+    <section class="credentials" id="credentials" role="region" aria-labelledby="credentials-title">
+        <div class="container">
+            <div class="credentials-content">
+                <h2 id="credentials-title"></h2>
+                <p id="credentials-subtitle"></p>
+                <div class="logos-container" id="logos-container" aria-label="Certificaciones y acreditaciones">
+                    <!-- Logos will be populated by JavaScript -->
+                </div>
+            </div>
+            <div class="testimonials" id="testimonials" aria-label="Testimonios de estudiantes">
+                <!-- Testimonials will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="benefits" role="region" aria-labelledby="benefits-heading">
+        <div class="container">
+            <h2 id="benefits-heading" class="sr-only">Beneficios de estudiar con nosotros</h2>
+            <div class="benefits-grid" id="benefits-grid" aria-label="Beneficios de estudiar con nosotros">
+                <!-- Benefits will be populated by JavaScript -->
+            </div>
+            <div class="cta-section">
+                <a id="benefits-cta" href="#form-contact" class="cta-button" role="button"></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <p id="footer-text"></p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,124 @@
+{
+  "seo": {
+    "title": "Centro Universitario Paso Del Norte - Tu Futuro Profesional Online",
+    "description": "Tu Ingeniería o Licenciatura Online con Doble Respaldo Oficial. 0% Inscripción, 0% Reinscripción y colegiatura congelada desde el primer día.",
+    "keywords": "universidad online, educación superior, ingeniería online, licenciaturas online, RVOE, SEP, estudios universitarios, colegiatura congelada",
+    "author": "Centro Universitario Paso Del Norte",
+    "robots": "index, follow",
+    "canonical": "https://tudominio.com/admision-2026",
+    "ogTitle": "Universidad Online con Doble Respaldo Oficial - CUPN",
+    "ogDescription": "La decisión inteligente: 0% Inscripción, 0% Reinscripción y garantía de colegiatura congelada desde el primer día.",
+    "ogImage": "https://tudominio.com/assets/images/og-image-b.jpg",
+    "ogUrl": "https://tudominio.com/admision-2026",
+    "twitterTitle": "Universidad Online - Colegiatura Congelada - CUPN",
+    "twitterDescription": "Tu Ingeniería o Licenciatura Online con Doble Respaldo Oficial. Sin costos ocultos ni aumentos sorpresa.",
+    "twitterImage": "https://tudominio.com/assets/images/twitter-image-b.jpg"
+  },
+  "pageTitle": "Centro Universitario Paso Del Norte",
+  "logo": {
+    "image": "assets/images/logo-cupn.webp",
+    "alt": "Centro Universitario Paso Del Norte"
+  },
+  "hero": {
+    "badge": "Admisiones abiertas 2026",
+    "title": "Tu Ingeniería o Licenciatura Online <br> con Doble Respaldo Oficial.",
+    "subtitle": "La decisión inteligente: 0% Inscripción, 0% Reinscripción <br> y garantía de colegiatura congelada desde el primer día.",
+    "imageAlt": "Ejecutivo profesional en oficina moderna",
+    "backgroundImage": "assets/images/hero-b.webp"
+  },
+  "form": {
+    "titleForm": "Asegura tu lugar con $0 inicial:",
+    "buttonText": "Solicitar informes por Whatsapp",
+    "note": "*Sin plazos forzosos. Trámite directo.",
+    "careers": [
+      "Ingeniería Agroindustrial y de Alimentos",
+      "Ingeniería Ambiental y Diseño de Energías Renovables",
+      "Ingeniería Eléctrica",
+      "Ingeniería en Gestión Empresarial",
+      "Ingeniería Industrial",
+      "Ingeniería en Manufactura",
+      "Ingeniería en Seguridad Cibernética",
+      "Ingeniería en Sistemas",
+      "Licenciatura en Administración",
+      "Licenciatura en Contaduría Publica",
+      "Licenciatura en Derecho",
+      "Licenciatura en Diseño Grafico",
+      "Licenciatura en Interpretación del Arte",
+      "Licenciatura en Logística y Aduanas",
+      "Licenciatura en Mercadotecnia",
+      "Licenciatura en Recursos Humanos",
+      "Licenciatura en Turismo"
+    ]
+  },
+  "credentials": {
+    "title": "Tu título <br> con Doble Respaldo Oficial",
+    "subtitle": "Programas incorporados y validados ante la Federación (SEP) y el Gobierno del Estado.",
+    "logos": [
+      {
+        "image": "assets/images/sep.webp",
+        "alt": "SEP"
+      },
+      {
+        "image": "assets/images/estate.webp",
+        "alt": "Estate"
+      },
+      {
+        "image": "assets/images/rvoe.webp",
+        "alt": "RVOE"
+      }
+    ]
+  },
+  "testimonials": [
+    {
+      "name": "Diego M., Ing. Industrial.",
+      "quote": "Me daba flojera la idea de estar 5 horas seguidas en un salón. Aquí todo es digital y directo. Estudio a mi ritmo y me da tiempo de trabajar para empezar a tener mis propios ingresos.",
+      "backgroundImage": "assets/images/testimonials/1.webp"
+    },
+    {
+      "name": "Martha S., Administración.",
+      "quote": "Tenía años sin estudiar y cuidaba mucho el gasto. Me convenció que la mensualidad siempre es la misma, sin aumentos sorpresa. Es una plataforma muy noble para estudiar tranquila.",
+      "backgroundImage": "assets/images/testimonials/3.webp"
+    },
+    {
+      "name": "Lic. Karen B., Negocios.",
+      "quote": "Mientras mis amigos están atorados en horarios de clase, la plataforma me permite trabajar tiempo completo. Así gano experiencia laboral real en la empresa y saco mi carrera al mismo tiempo.",
+      "backgroundImage": "assets/images/testimonials/2.webp"
+    },
+    {
+      "name": "Ing. Ricardo L., Mantenimiento.",
+      "quote": "A mi edad busco seriedad, no perder el tiempo. El sistema de módulos me cayó perfecto para validar mis años de experiencia con un título oficial de forma directa.",
+      "backgroundImage": "assets/images/testimonials/4.webp"
+    },
+    {
+      "name": "Sofía T., Contaduría.",
+      "quote": "No quería la típica rutina de horarios fijos. La plataforma me da libertad total: entro, descargo lo que necesito y listo. Sin maestros pasando lista, todo depende de mí.",
+      "backgroundImage": "assets/images/testimonials/5.webp"
+    },
+    {
+      "name": "Javier R., Ing. Sistemas.",
+      "quote": "Hice cuentas y la verdad aquí conviene más. Te ahorras la inscripción y la reinscripción de cada cuatrimestre. ",
+      "backgroundImage": "assets/images/testimonials/6.webp"
+    }
+  ],
+  "benefits": [
+    {
+      "icon": "assets/images/benefits/1-b.svg",
+      "title": "Certeza Legal <br> Garantizada",
+      "description": "No somos una 'escuela patito'. Tenemos RVOE Federal y Estatal visible y verificable. Estudia con la paz menta de que tu esfuerzo vale."
+    },
+    {
+      "icon": "assets/images/benefits/2-b.svg",
+      "title": "Ahorro<br> Inteligente.",
+      "description": "Ahórrate la inscripción y reinscripción. Sin costos ocultos ni aumentos sorpresa. Tu colegiatura se congela durante toda tu carrera."
+    },
+    {
+      "icon": "assets/images/benefits/3-b.svg",
+      "title": "100% Online<br> y Flexible.",
+      "description": "Sin gastos de transporte, libros caros ni horarios fijos. Todo está en la plataforma digital lista para usarse desde tu celular."
+    }
+  ],
+  "benefitsCta": "Empezar solicitud arriba",
+  "footer": {
+    "text": "Copyright © 2024 CUPN. | <a href='assets/docs/aviso-privacidad-cupn.pdf' target='_blank'>Aviso de Privacidad</a>"
+  }
+}
