@@ -38,9 +38,13 @@
     <!-- Styles -->
     <link rel="stylesheet" href="../assets/styles.css">
     
-    <!-- Slick Carousel CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <!-- Slick Carousel CSS - Carga asíncrona -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    </noscript>
 </head>
 <body>
     <!-- Toast Container -->
@@ -52,7 +56,7 @@
             <div class="hero-content">
                 <!-- Logo -->
                 <header class="logo" role="banner">
-                    LOGO
+                    <img id="logo-img" src="" alt="" width="100%" height="100%">
                 </header>
                 
                 <!-- Hero Text -->
@@ -98,7 +102,7 @@
                             <div class="main-button-submit">
                                 <button type="submit" class="whatsapp-btn" aria-describedby="form-note">
                                     <span class="whatsapp-icon" aria-hidden="true">
-                                        <img src="../assets/images/icon-whatsapp.png" width="24" height="24" alt="Icon Whatsapp" role="presentation">
+                                        <img src="../assets/images/icon-whatsapp.webp" width="100%" height="100%" alt="Icon Whatsapp" role="presentation">
                                     </span>
                                     <span id="whatsapp-text"></span>
                                 </button>

@@ -16,14 +16,13 @@
   },
   "pageTitle": "Centro Universitario Paso Del Norte",
   "logo": {
-    "image": "",
+    "image": "../assets/images/logo-cupn.webp",
     "alt": "Centro Universitario Paso Del Norte"
   },
   "hero": {
     "badge": "Admisiones abiertas 2026",
     "title": "Deja de estudiar teoría. <br> Entrénate para la industria real.",
     "subtitle": "Ingenierías y licenciaturas Online diseñadas para que subas de puesto. <br> Sin rellenos y con validez oficial para trabajar ya.",
-    "image": "https://via.placeholder.com/500x600/8e44ad/ffffff?text=Ejecutivo+Exitoso",
     "imageAlt": "Ejecutivo profesional en oficina moderna",
     "backgroundImage": "../assets/images/hero-a.webp"
   },
@@ -56,68 +55,70 @@
     "subtitle": "Programas incorporados y validados ante la Federación (SEP) y el Gobierno del Estado.",
     "logos": [
       {
-        "image": "https://picsum.photos/60/40?random=10",
-        "alt": "AACSB International Accreditation"
+        "image": "../assets/images/sep.webp",
+        "alt": "SEP"
       },
       {
-        "image": "https://picsum.photos/60/40?random=11",
-        "alt": "Harvard Business School Partner"
+        "image": "../assets/images/estate.webp",
+        "alt": "Estate"
       },
       {
-        "image": "https://picsum.photos/60/40?random=12",
-        "alt": "Wharton School Alliance"
-      },
-      {
-        "image": "https://picsum.photos/60/40?random=13",
-        "alt": "MIT Partnership"
-      },
-      {
-        "image": "https://picsum.photos/60/40?random=14",
-        "alt": "Stanford Alliance"
+        "image": "../assets/images/rvoe.webp",
+        "alt": "RVOE"
       }
     ]
   },
   "testimonials": [
     {
-      "name": "Roberto G., Ing. Industrial.",
-      "quote": "Rolando turnos no puedo entrar a clases. Aquí bajo mis guías, subo la tarea y listo. Ya soy Supervisor.",
-      "backgroundImage": "https://picsum.photos/255/354?random=1"
+      "name": "Diego M., Ing. Industrial.",
+      "quote": "Me daba flojera la idea de estar 5 horas seguidas en un salón. Aquí todo es digital y directo. Estudio a mi ritmo y me da tiempo de trabajar para empezar a tener mis propios ingresos.",
+      "backgroundImage": "../assets/images/testimonials/1.webp"
     },
     {
-      "name": "Ana P., Lic. en Logística.",
-      "quote": "Sin video llamadas eternas. Todo está en la plataforma: descargo el módulo, resuelvo y lo cargo. Rápido y práctivo.",
-      "backgroundImage": "https://picsum.photos/255/354?random=2"
+      "name": "Martha S., Administración.",
+      "quote": "Tenía años sin estudiar y cuidaba mucho el gasto. Me convenció que la mensualidad siempre es la misma, sin aumentos sorpresa. Es una plataforma muy noble para estudiar tranquila.",
+      "backgroundImage": "../assets/images/testimonials/3.webp"
     },
     {
-      "name": "Lucía R., Administración.",
-      "quote": "Buscaba validez, no recre. Completé mis módulos y obtuve mi título con RVOE sin perder tiempo. 100% autodidacta.",
-      "backgroundImage": "https://picsum.photos/255/354?random=3"
+      "name": "Lic. Karen B., Negocios.",
+      "quote": "Mientras mis amigos están atorados en horarios de clase, la plataforma me permite trabajar tiempo completo. Así gano experiencia laboral real en la empresa y saco mi carrera al mismo tiempo.",
+      "backgroundImage": "../assets/images/testimonials/2.webp"
     },
     {
-      "name": "Roberto G., Ing. Industrial.",
-      "quote": "Rolando turnos no puedo entrar a clases. Aquí bajo mis guías, subo la tarea y listo. Ya soy Supervisor.",
-      "backgroundImage": "https://picsum.photos/255/354?random=4"
+      "name": "Ing. Ricardo L., Mantenimiento.",
+      "quote": "A mi edad busco seriedad, no perder el tiempo. El sistema de módulos me cayó perfecto para validar mis años de experiencia con un título oficial de forma directa.",
+      "backgroundImage": "../assets/images/testimonials/4.webp"
+    },
+    {
+      "name": "Sofía T., Contaduría.",
+      "quote": "No quería la típica rutina de horarios fijos. La plataforma me da libertad total: entro, descargo lo que necesito y listo. Sin maestros pasando lista, todo depende de mí.",
+      "backgroundImage": "../assets/images/testimonials/5.webp"
+    },
+    {
+      "name": "Javier R., Ing. Sistemas.",
+      "quote": "Hice cuentas y la verdad aquí conviene más. Te ahorras la inscripción y la reinscripción de cada cuatrimestre. ",
+      "backgroundImage": "../assets/images/testimonials/6.webp"
     }
   ],
   "benefits": [
     {
-      "icon": "",
+      "icon": "../assets/images/benefits/1-a.svg",
       "title": "Títulos que <br> la industria respeta",
       "description": "Programas con RVOE Federal diseñados para el mercado laboral real. Tu título tiene peso para conseguir ese ascenso o mejor sueldo."
     },
     {
-      "icon": "",
+      "icon": "../assets/images/benefits/2-a.svg",
       "title": "Tu dinero en tu futuro, <br> no en trámites",
       "description": "La única opción verdaderamente inteligente: 0% Inscripción y 0% Reinscripción. Lo que ahorras en cuotas, inviértelo en ti."
     },
     {
-      "icon": "",
+      "icon": "../assets/images/benefits/3-a.svg",
       "title": "Estudiar <br> sin renunciar a tu vida",
       "description": "Sabemos que trabajas. Nuestra plataforma y docentes se adaptan a tus turnos y horarios, no al revés. Soporte humano real, no robots."
     }
   ],
   "benefitsCta": "Empezar solicitud arriba",
   "footer": {
-    "text": "Copyright © 2024 CUPN. | Aviso de Privacidad"
+    "text": "Copyright © 2024 CUPN. | <a href='../assets/docs/aviso-privacidad-cupn.pdf' target='_blank'>Aviso de Privacidad</a>"
   }
 }

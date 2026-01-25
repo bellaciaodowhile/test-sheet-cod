@@ -66,7 +66,7 @@ function loadFallbackData() {
         },
         "pageTitle": "Universidad Premium - Programas Ejecutivos",
         "logo": {
-            "image": "https://picsum.photos/200/60?random=1",
+            "image": "../assets/images/Recurso 1CUPN.webp",
             "alt": "Universidad Premium"
         },
         "hero": {
@@ -162,17 +162,17 @@ function loadFallbackData() {
         ],
         "benefits": [
             {
-                "icon": "👑",
+                "icon": "../assets/images/benefits/1-a.svg",
                 "title": "Elite Empresarial Exclusiva",
                 "description": "Acceso a una red de contactos de alto nivel. Compañeros de clase que son CEOs, directores y empresarios exitosos. Tu network será tu mayor activo."
             },
             {
-                "icon": "🌍",
+                "icon": "../assets/images/benefits/2-a.svg",
                 "title": "Reconocimiento Global",
                 "description": "Títulos con validez internacional. Programas acreditados por las mejores instituciones mundiales. Tu credencial abrirá puertas en cualquier país."
             },
             {
-                "icon": "⚡",
+                "icon": "../assets/images/benefits/3-a.svg",
                 "title": "Modalidad Ejecutiva Inteligente",
                 "description": "Horarios diseñados para ejecutivos en activo. Clases intensivas de fin de semana y módulos internacionales. Sin interrumpir tu carrera profesional."
             }
@@ -333,12 +333,19 @@ function populatePage(data) {
                 logoImg.src = logo.image;
                 logoImg.alt = logo.alt;
                 logoImg.className = 'credential-logo';
-                logoImg.width = 60;
-                logoImg.height = 40;
-                logoImg.style.width = '60px';
-                logoImg.style.height = '40px';
+                logoImg.width = 'auto';
+                logoImg.height = 'auto';
+                logoImg.style.width = 'auto';
+                logoImg.style.height = 'auto';
                 logoImg.style.objectFit = 'contain';
                 logosContainer.appendChild(logoImg);
+                
+                // Agregar separador después de cada logo (excepto el último)
+                if (index < data.credentials.logos.length - 1) {
+                    const separator = document.createElement('div');
+                    separator.className = 'logo-separator';
+                    logosContainer.appendChild(separator);
+                }
             });
         }
 
@@ -439,8 +446,19 @@ function populatePage(data) {
             data.benefits.forEach((benefit, index) => {
                 const benefitCard = document.createElement('div');
                 benefitCard.className = 'benefit-card';
+                
+                // Crear el HTML del benefit con imagen o emoji
+                let iconHtml = '';
+                if (benefit.icon && benefit.icon.includes('.')) {
+                    // Es una imagen (tiene extensión)
+                    iconHtml = `<img src="${benefit.icon}" alt="Icono ${benefit.title}" width="80" height="80">`;
+                } else {
+                    // Es un emoji o texto
+                    iconHtml = benefit.icon;
+                }
+                
                 benefitCard.innerHTML = `
-                    <div class="benefit-icon" aria-hidden="true">${benefit.icon}</div>
+                    <div class="benefit-icon" aria-hidden="true">${iconHtml}</div>
                     <h3>${benefit.title}</h3>
                     <p>${benefit.description}</p>
                 `;

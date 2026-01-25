@@ -14,7 +14,12 @@ body {
     color: #333;
 }
 
-/* Animaciones generales */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Animaciones generales - más rápidas */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -68,33 +73,33 @@ body {
     }
 }
 
-/* Clases de animación */
+/* Clases de animación - más rápidas */
 .animate-fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
+    animation: fadeInUp 0.4s ease-out forwards;
 }
 
 .animate-fade-in-left {
-    animation: fadeInLeft 0.8s ease-out forwards;
+    animation: fadeInLeft 0.4s ease-out forwards;
 }
 
 .animate-fade-in-right {
-    animation: fadeInRight 0.8s ease-out forwards;
+    animation: fadeInRight 0.4s ease-out forwards;
 }
 
 .animate-fade-in {
-    animation: fadeIn 0.8s ease-out forwards;
+    animation: fadeIn 0.4s ease-out forwards;
 }
 
 .animate-scale-in {
-    animation: scaleIn 0.8s ease-out forwards;
+    animation: scaleIn 0.4s ease-out forwards;
 }
 
-/* Delays para animaciones escalonadas */
-.animate-delay-1 { animation-delay: 0.1s; }
-.animate-delay-2 { animation-delay: 0.2s; }
-.animate-delay-3 { animation-delay: 0.3s; }
-.animate-delay-4 { animation-delay: 0.4s; }
-.animate-delay-5 { animation-delay: 0.5s; }
+/* Delays más cortos para animaciones escalonadas */
+.animate-delay-1 { animation-delay: 0.05s; }
+.animate-delay-2 { animation-delay: 0.1s; }
+.animate-delay-3 { animation-delay: 0.15s; }
+.animate-delay-4 { animation-delay: 0.2s; }
+.animate-delay-5 { animation-delay: 0.25s; }
 
 /* Estado inicial para elementos animados */
 .animate-fade-in-up,
@@ -155,17 +160,16 @@ img:not([width]):not([height]) {
 
 /* Estilos específicos para imágenes en iconos */
 .whatsapp-icon img {
-    width: 24px;
-    height: 24px;
     max-width: 100%;
     max-height: 100%;
 }
 
 .logo img {
-    height: 60px;
+    height: 107px;
     width: auto;
     max-width: 100%;
     max-height: 100%;
+    object-fit: contain;
 }
 
 /* Imágenes de credenciales */
@@ -370,7 +374,7 @@ img:not([width]):not([height]) {
 }
 
 .container {
-    max-width: 1330px;
+    max-width: 1520px;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -391,7 +395,7 @@ img:not([width]):not([height]) {
     width: 100%;
     display: flex;
     align-items: center;
-    max-width: 1330px;
+    max-width: 1520px;
     margin: 0 auto;
     padding: 0 20px;
     gap: 3rem;
@@ -404,18 +408,17 @@ img:not([width]):not([height]) {
 }
 
 .logo {
-    margin-bottom: 2rem;
-    color: white;
-    font-size: 50px;
-    font-weight: 700;
-    animation: fadeInLeft 1s ease-out;
+    margin-bottom: 1rem;
+    animation: fadeIn 0.3s ease-out;
+    display: flex;
+    align-items: center;
 }
 
 .hero-badge {
     font-size: 20px;
     margin-bottom: 1rem;
     display: inline-block;
-    animation: fadeInUp 1s ease-out 0.2s both;
+    animation: fadeIn 0.3s ease-out;
 }
 
 .hero h1 {
@@ -423,7 +426,7 @@ img:not([width]):not([height]) {
     font-weight: 700;
     margin-bottom: 1rem;
     line-height: 1.2;
-    animation: fadeInUp 1s ease-out 0.4s both;
+    animation: fadeIn 0.3s ease-out;
 }
 
 .hero-subtitle {
@@ -433,13 +436,13 @@ img:not([width]):not([height]) {
     line-height: 1.2;
     max-width: 850px;
     width: 100%;
-    animation: fadeInUp 1s ease-out 0.6s both;
+    animation: fadeIn 0.3s ease-out;
 }
 
 .hero-image {
     flex: 1;
     text-align: center;
-    animation: fadeInRight 1s ease-out 0.8s both;
+    animation: fadeIn 0.3s ease-out;
 }
 
 .hero-image img {
@@ -455,12 +458,7 @@ img:not([width]):not([height]) {
 .title-form {
     font-size: 29px;
     font-weight: 700;
-    animation: fadeInUp 1s ease-out 0.8s both;
-}
-
-.logo img {
-    height: 60px;
-    width: auto;
+    animation: fadeIn 0.3s ease-out;
 }
 
 .lead-form-container {
@@ -472,7 +470,7 @@ img:not([width]):not([height]) {
     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     max-width: 740px;
     transition: all 0.3s ease;
-    animation: scaleIn 1s ease-out 1s forwards;
+    animation: fadeIn 0.3s ease-out;
 }
 
 /* Estado de error para campos faltantes */
@@ -489,15 +487,15 @@ img:not([width]):not([height]) {
 }
 
 .form-row:nth-child(1) {
-    animation: fadeInLeft 0.8s ease-out 1.2s both;
+    animation: fadeIn 0.3s ease-out;
 }
 
 .form-row:nth-child(2) {
-    animation: fadeInRight 0.8s ease-out 1.4s both;
+    animation: fadeIn 0.3s ease-out;
 }
 
 .main-button-submit {
-    animation: fadeInUp 0.8s ease-out 1.6s both;
+    animation: fadeIn 0.3s ease-out;
 }
 
 /* Overlay de carga */
@@ -581,7 +579,7 @@ img:not([width]):not([height]) {
 .main-button-submit {
     padding-left: 20px;
     position: absolute;
-    bottom: -64px;
+    bottom: -52px;
     width: 82%;
 }
 
@@ -590,7 +588,7 @@ img:not([width]):not([height]) {
     width: 100%;
     background: #23650B;
     color: white;
-    padding: 22px;
+    padding: 18px;
     border: none;
     font-size: 27px;
     font-weight: normal;
@@ -660,7 +658,7 @@ img:not([width]):not([height]) {
 
 .logos-container {
     display: flex;
-    gap: 2rem;
+    gap: 0;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
@@ -673,10 +671,20 @@ img:not([width]):not([height]) {
     max-height: 100%;
     object-fit: contain;
     transition: transform 0.3s ease;
+    padding: 0 1rem;
 }
 
 .credential-logo:hover {
     transform: scale(1.1);
+}
+
+/* Separadores entre logos */
+.logo-separator {
+    width: 1px;
+    height: 25px;
+    background-color: #0009;
+    margin: 0 0.5rem;
+    flex-shrink: 0;
 }
 
 .testimonials {
@@ -799,7 +807,6 @@ img:not([width]):not([height]) {
 .benefit-icon {
     width: 100px;
     height: 100px;
-    background: #333;
     border-radius: 50%;
     margin: 0 auto 2rem;
     display: flex;
@@ -810,9 +817,14 @@ img:not([width]):not([height]) {
     transition: transform 0.3s ease, background 0.3s ease;
 }
 
+.benefit-icon img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
 .benefit-card:hover .benefit-icon {
     transform: scale(1.1);
-    background: #4BA65C;
 }
 
 .benefit-card h3 {
@@ -834,7 +846,7 @@ img:not([width]):not([height]) {
 }
 
 .cta-button {
-    background: #469B56;
+    background: #23650B;
     color: white;
     padding: 10px 60px;
     border: none;
@@ -925,8 +937,8 @@ img:not([width]):not([height]) {
     }
     
     .whatsapp-icon img {
-        width: 20px;
-        height: 20px;
+        width: 41px;
+        height: auto;
     }
     .title-form {
         font-size: 22px;
