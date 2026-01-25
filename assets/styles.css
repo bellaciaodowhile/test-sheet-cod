@@ -160,7 +160,7 @@ img:not([width]):not([height]) {
 
 /* Estilos específicos para imágenes en iconos */
 .whatsapp-icon img {
-    max-width: 100%;
+    max-width: 77px;
     max-height: 100%;
 }
 
@@ -984,4 +984,8 @@ img:not([width]):not([height]) {
     .credentials h2 {
         font-size: 1.8rem;
     }
+    .slick-track {
+        height: 535px;
+    }
+
 }

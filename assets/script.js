@@ -600,6 +600,40 @@ function clearAllToasts() {
     }
 }
 
+// Función para capturar parámetros UTM de la URL
+function captureUTMParameters() {
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    // Lista de parámetros UTM a capturar
+    const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+    
+    utmParams.forEach(param => {
+        const value = urlParams.get(param) || '';
+        const hiddenField = document.getElementById(param);
+        
+        if (hiddenField) {
+            hiddenField.value = value;
+            console.log(`📊 UTM capturado - ${param}: ${value || 'no definido'}`);
+        }
+    });
+    
+    // También guardar en sessionStorage para persistir durante la sesión
+    utmParams.forEach(param => {
+        const value = urlParams.get(param);
+        if (value) {
+            sessionStorage.setItem(param, value);
+        } else {
+            // Si no hay valor en URL, intentar recuperar de sessionStorage
+            const storedValue = sessionStorage.getItem(param) || '';
+            const hiddenField = document.getElementById(param);
+            if (hiddenField && storedValue) {
+                hiddenField.value = storedValue;
+                console.log(`📊 UTM recuperado de sesión - ${param}: ${storedValue}`);
+            }
+        }
+    });
+}
+
 // Función para validar número de teléfono (solo números, sin restricciones de pegado)
 function setupPhoneValidation() {
     const phoneInput = document.getElementById('telefono');
@@ -730,7 +764,12 @@ async function saveToGoogleSheets(datosFormulario) {
             telefono: datosFormulario.telefono,
             email: datosFormulario.email,
             carrera: datosFormulario.carrera,
-            landing: datosFormulario.landing
+            landing: datosFormulario.landing,
+            utm_source: datosFormulario.utm_source,
+            utm_medium: datosFormulario.utm_medium,
+            utm_campaign: datosFormulario.utm_campaign,
+            utm_term: datosFormulario.utm_term,
+            utm_content: datosFormulario.utm_content
         });
         
         const urlWithParams = `${APPS_SCRIPT_URL}?${params.toString()}`;
@@ -807,6 +846,13 @@ function handleLeadForm() {
         const email = document.getElementById('email').value.trim();
         const carrera = document.getElementById('carrera').value.trim();
         
+        // Capturar parámetros UTM
+        const utmSource = document.getElementById('utm_source').value || '';
+        const utmMedium = document.getElementById('utm_medium').value || '';
+        const utmCampaign = document.getElementById('utm_campaign').value || '';
+        const utmTerm = document.getElementById('utm_term').value || '';
+        const utmContent = document.getElementById('utm_content').value || '';
+        
         // Validar que todos los campos estén llenos
         if (!nombre || !telefono || !email || !carrera) {
             // Marcar formulario en rojo
@@ -850,7 +896,12 @@ function handleLeadForm() {
             email: email,
             carrera: carrera,
             landing: landing,
-            url: window.location.href
+            url: window.location.href,
+            utm_source: utmSource,
+            utm_medium: utmMedium,
+            utm_campaign: utmCampaign,
+            utm_term: utmTerm,
+            utm_content: utmContent
         };
         
         // Mostrar los datos en consola
@@ -981,6 +1032,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Inicializar formulario (solo una vez)
     setTimeout(() => {
+        captureUTMParameters(); // Capturar parámetros UTM primero
         handleLeadForm();
         setupPhoneValidation();
         setupScrollAnimations();

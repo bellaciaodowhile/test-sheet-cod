@@ -30,13 +30,72 @@
     <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
     <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
     
+    <!-- Preload recursos críticos -->
+    <link rel="preload" href="../assets/styles.min.css" as="style">
+    <link rel="preload" href="../assets/script.min.js" as="script">
+    <link rel="preload" href="../data-a.json" as="fetch" crossorigin>
+    <link rel="preload" href="https://code.jquery.com/jquery-3.6.0.min.js" as="script">
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="../assets/styles.css">
+    <link rel="stylesheet" href="../assets/styles.min.css">
+    
+    <!-- Scripts críticos con defer -->
+    <script>
+        // Configuración inline para evitar solicitud HTTP adicional
+        function getConfig() {
+            const isDevelopment = window.location.hostname === 'localhost' || 
+                                 window.location.hostname === '127.0.0.1' ||
+                                 window.location.hostname.includes('localhost') ||
+                                 window.location.port !== '';
+            
+            if (window.ENV) {
+                return window.ENV;
+            }
+            
+            if (isDevelopment) {
+                return {
+                    APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbyZb8ZZNE6DdWXkM8h7LlRhcjnkawFA34CK_HDezy2ZK55CdMQ9j21bhVtGnq0cby4z/exec',
+                    WHATSAPP_NUMBER: '1232132121',
+                    API_TIMEOUT: 10000,
+                    DEBUG_MODE: true
+                };
+            } else {
+                return {
+                    APPS_SCRIPT_URL: '',
+                    WHATSAPP_NUMBER: '1234567890',
+                    API_TIMEOUT: 10000,
+                    DEBUG_MODE: false
+                };
+            }
+        }
+        
+        function initializeConfig() {
+            if (!window.CONFIG) {
+                window.CONFIG = getConfig();
+            }
+        }
+        
+        window.safeLog = function(message, data = null) {
+            if (window.CONFIG?.DEBUG_MODE) {
+                if (data) {
+                    console.log(message, data);
+                } else {
+                    console.log(message);
+                }
+            }
+        };
+        
+        initializeConfig();
+    </script>
+    <script src="/env-config.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer></script>
+    <script src="../assets/script.min.js" defer></script>
     
     <!-- Slick Carousel CSS - Carga asíncrona -->
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -77,6 +136,13 @@
                         </div>
                         
                         <form class="lead-form" id="lead-form" novalidate>
+                            <!-- Campos ocultos para parámetros UTM -->
+                            <input type="hidden" id="utm_source" name="utm_source" value="">
+                            <input type="hidden" id="utm_medium" name="utm_medium" value="">
+                            <input type="hidden" id="utm_campaign" name="utm_campaign" value="">
+                            <input type="hidden" id="utm_term" name="utm_term" value="">
+                            <input type="hidden" id="utm_content" name="utm_content" value="">
+                            
                             <div class="form-row">
                                 <div class="input-group">
                                     <label for="nombre" class="sr-only">Nombre y apellido</label>
@@ -150,14 +216,5 @@
             <p id="footer-text"></p>
         </div>
     </footer>
-    
-    <!-- Configuración de variables de entorno -->
-    <script src="/env-config.js"></script>
-    <script src="../config.js"></script>
-    
-    <!-- jQuery y Slick Carousel JS -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script src="../assets/script.min.js"></script>
 </body>
 </html>
