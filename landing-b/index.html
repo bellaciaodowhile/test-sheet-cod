@@ -36,13 +36,35 @@
     <link rel="preload" href="../data-b.json" as="fetch" crossorigin>
     <link rel="preload" href="https://code.jquery.com/jquery-3.6.0.min.js" as="script">
     
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <!-- Fuentes de sistema como fallback inmediato -->
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        .fonts-loaded body {
+            font-family: "Open Sans", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+    </style>
     
     <!-- Styles -->
     <link rel="stylesheet" href="../assets/styles.min.css">
+    
+    <!-- Google Fonts completamente asíncrono -->
+    <script>
+        (function() {
+            const link = document.createElement('link');
+            link.href = 'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap';
+            link.rel = 'stylesheet';
+            link.onload = function() {
+                document.documentElement.classList.add('fonts-loaded');
+            };
+            link.onerror = function() {
+                console.warn('Google Fonts failed to load, using system fonts');
+            };
+            document.head.appendChild(link);
+        })();
+    </script>
     
     <!-- Scripts críticos con defer -->
     <script>
@@ -140,8 +162,6 @@
                             <input type="hidden" id="utm_source" name="utm_source" value="">
                             <input type="hidden" id="utm_medium" name="utm_medium" value="">
                             <input type="hidden" id="utm_campaign" name="utm_campaign" value="">
-                            <input type="hidden" id="utm_term" name="utm_term" value="">
-                            <input type="hidden" id="utm_content" name="utm_content" value="">
                             
                             <div class="form-row">
                                 <div class="input-group">

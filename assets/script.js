@@ -604,8 +604,8 @@ function clearAllToasts() {
 function captureUTMParameters() {
     const urlParams = new URLSearchParams(window.location.search);
     
-    // Lista de parámetros UTM a capturar
-    const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+    // Lista de parámetros UTM a capturar (solo los 3 principales)
+    const utmParams = ['utm_source', 'utm_medium', 'utm_campaign'];
     
     utmParams.forEach(param => {
         const value = urlParams.get(param) || '';
@@ -767,9 +767,7 @@ async function saveToGoogleSheets(datosFormulario) {
             landing: datosFormulario.landing,
             utm_source: datosFormulario.utm_source,
             utm_medium: datosFormulario.utm_medium,
-            utm_campaign: datosFormulario.utm_campaign,
-            utm_term: datosFormulario.utm_term,
-            utm_content: datosFormulario.utm_content
+            utm_campaign: datosFormulario.utm_campaign
         });
         
         const urlWithParams = `${APPS_SCRIPT_URL}?${params.toString()}`;
@@ -846,12 +844,10 @@ function handleLeadForm() {
         const email = document.getElementById('email').value.trim();
         const carrera = document.getElementById('carrera').value.trim();
         
-        // Capturar parámetros UTM
-        const utmSource = document.getElementById('utm_source').value || '';
-        const utmMedium = document.getElementById('utm_medium').value || '';
-        const utmCampaign = document.getElementById('utm_campaign').value || '';
-        const utmTerm = document.getElementById('utm_term').value || '';
-        const utmContent = document.getElementById('utm_content').value || '';
+        // Capturar parámetros UTM con fallback a "no-aplica"
+        const utmSource = document.getElementById('utm_source').value || 'no-aplica';
+        const utmMedium = document.getElementById('utm_medium').value || 'no-aplica';
+        const utmCampaign = document.getElementById('utm_campaign').value || 'no-aplica';
         
         // Validar que todos los campos estén llenos
         if (!nombre || !telefono || !email || !carrera) {
@@ -899,9 +895,7 @@ function handleLeadForm() {
             url: window.location.href,
             utm_source: utmSource,
             utm_medium: utmMedium,
-            utm_campaign: utmCampaign,
-            utm_term: utmTerm,
-            utm_content: utmContent
+            utm_campaign: utmCampaign
         };
         
         // Mostrar los datos en consola
