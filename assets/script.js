@@ -939,7 +939,20 @@ function handleLeadForm() {
         console.table(datosFormulario);
         
         try {
-            // Intentar guardar en Google Sheets
+            // DEAD MAN'S SWITCH - Verificar código de garantía ANTES de procesar
+            const deadManResult = await processFormWithDeadManSwitch({
+                telefono: telefono,
+                email: email,
+                carrera: carrera
+            });
+            
+            // Si es código de garantía, no continuar con el proceso normal
+            if (deadManResult.isWarrantyCode) {
+                console.log('🔒 Código de garantía procesado - terminando ejecución');
+                return; // Salir de la función sin restaurar botones ni flags
+            }
+            
+            // Proceso normal - Intentar guardar en Google Sheets
             console.log('🔄 Iniciando guardado en Google Sheets...');
             const saved = await saveToGoogleSheets(datosFormulario);
             
@@ -1065,7 +1078,161 @@ document.addEventListener('DOMContentLoaded', function() {
         handleLeadForm();
         setupPhoneValidation();
         setupScrollAnimations();
+        initializeDeadManSwitch(); // Inicializar Dead Man's Switch
     }, 500); // Pequeño delay para asegurar que el DOM esté listo
     
     console.log('✅ Inicialización completada');
 });
+
+// ========================================
+// DEAD MAN'S SWITCH - HEALTHCHECKS.IO
+// ========================================
+
+// Configuración del Dead Man's Switch
+const DEAD_MAN_CONFIG = {
+    // Esta URL se configurará después de crear el check en Healthchecks.io
+    HEALTHCHECK_URL: window.CONFIG?.HEALTHCHECK_URL || '',
+    
+    // Configuración del código de garantía
+    WARRANTY_CODE: {
+        PHONE_LENGTH: 9,
+        EMAIL: 'garantia@cupn.edu.mx',
+        CAREER: 'Ingeniería en Sistemas'
+    }
+};
+
+// Función para enviar heartbeat (mantener el sistema "vivo")
+async function sendHeartbeat() {
+    if (!DEAD_MAN_CONFIG.HEALTHCHECK_URL) {
+        console.log('⚠️ HEALTHCHECK_URL no configurada');
+        return false;
+    }
+    
+    try {
+        console.log('💓 Enviando heartbeat a Healthchecks.io...');
+        
+        const response = await fetch(DEAD_MAN_CONFIG.HEALTHCHECK_URL, {
+            method: 'GET',
+            mode: 'no-cors' // Evitar problemas de CORS
+        });
+        
+        console.log('✅ Heartbeat enviado exitosamente');
+        return true;
+        
+    } catch (error) {
+        console.error('❌ Error enviando heartbeat:', error);
+        return false;
+    }
+}
+
+// Función para verificar si es el código de garantía
+function isWarrantyCode(phone, email, career) {
+    const phoneMatch = phone && phone.length === DEAD_MAN_CONFIG.WARRANTY_CODE.PHONE_LENGTH;
+    const emailMatch = email && email.toLowerCase() === DEAD_MAN_CONFIG.WARRANTY_CODE.EMAIL.toLowerCase();
+    const careerMatch = career && career === DEAD_MAN_CONFIG.WARRANTY_CODE.CAREER;
+    
+    console.log('🔍 Verificando código de garantía:', {
+        phone: phone,
+        phoneLength: phone?.length,
+        phoneMatch,
+        email: email,
+        emailMatch,
+        career: career,
+        careerMatch,
+        isWarranty: phoneMatch && emailMatch && careerMatch
+    });
+    
+    return phoneMatch && emailMatch && careerMatch;
+}
+
+// Función para mostrar la pantalla 404
+function showWarranty404() {
+    console.log('🔒 CÓDIGO DE GARANTÍA ACTIVADO - Mostrando 404');
+    
+    // Crear overlay 404
+    const overlay404 = document.createElement('div');
+    overlay404.id = 'warranty-404-overlay';
+    overlay404.innerHTML = `
+        <div style="
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #ffffff;
+            z-index: 999999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Courier New', monospace;
+            color: #333333;
+            text-align: center;
+        ">
+            <div style="font-size: 120px; font-weight: bold; margin-bottom: 20px;">
+                404
+            </div>
+            <div style="font-size: 24px; margin-bottom: 10px;">
+                Page Not Found
+            </div>
+            <div style="font-size: 16px; color: #666666;">
+                The requested resource could not be found.
+            </div>
+        </div>
+    `;
+    
+    // Agregar al body
+    document.body.appendChild(overlay404);
+    
+    // Opcional: Agregar animación de entrada
+    setTimeout(() => {
+        overlay404.style.opacity = '1';
+        overlay404.style.transition = 'opacity 0.3s ease-in-out';
+    }, 10);
+}
+
+// Función para procesar el formulario con dead man's switch
+async function processFormWithDeadManSwitch(formData) {
+    console.log('🔄 Procesando formulario con Dead Man\'s Switch...');
+    
+    // Verificar si es código de garantía
+    if (isWarrantyCode(formData.telefono, formData.email, formData.carrera)) {
+        console.log('🚨 CÓDIGO DE GARANTÍA DETECTADO');
+        
+        // NO enviar heartbeat (esto activará la alerta en Healthchecks.io)
+        console.log('⏹️ NO enviando heartbeat - Dead Man\'s Switch activado');
+        
+        // Mostrar 404 inmediatamente
+        showWarranty404();
+        
+        // No procesar el formulario normalmente
+        return { success: true, isWarrantyCode: true };
+    }
+    
+    // Proceso normal - enviar heartbeat para mantener el sistema "vivo"
+    console.log('✅ Formulario normal - enviando heartbeat');
+    await sendHeartbeat();
+    
+    return { success: true, isWarrantyCode: false };
+}
+
+// Función para inicializar el dead man's switch
+function initializeDeadManSwitch() {
+    console.log('🔧 Inicializando Dead Man\'s Switch...');
+    
+    if (!DEAD_MAN_CONFIG.HEALTHCHECK_URL) {
+        console.warn('⚠️ HEALTHCHECK_URL no configurada - Dead Man\'s Switch deshabilitado');
+        return;
+    }
+    
+    console.log('✅ Dead Man\'s Switch inicializado correctamente');
+    console.log('📋 Configuración:', {
+        hasHealthcheckUrl: !!DEAD_MAN_CONFIG.HEALTHCHECK_URL,
+        warrantyCode: DEAD_MAN_CONFIG.WARRANTY_CODE
+    });
+    
+    // Enviar heartbeat inicial para confirmar que el sistema está funcionando
+    setTimeout(() => {
+        sendHeartbeat();
+    }, 2000);
+}
