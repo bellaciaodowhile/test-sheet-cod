@@ -1065,23 +1065,40 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.landingPageInitialized = true;
     
-    // Detectar el archivo JSON a cargar
-    const jsonFile = detectLandingPage();
-    console.log('📄 Archivo JSON detectado:', jsonFile);
+    // Verificar que la configuración esté disponible
+    function initializeWithConfig() {
+        if (!window.CONFIG) {
+            console.warn('⚠️ CONFIG no disponible, esperando...');
+            setTimeout(initializeWithConfig, 50);
+            return;
+        }
+        
+        console.log('✅ CONFIG disponible, inicializando página...');
+        console.log('🔧 URLs configuradas:', {
+            hasAppsScript: !!window.CONFIG.APPS_SCRIPT_URL,
+            hasHealthcheck: !!window.CONFIG.HEALTHCHECK_URL,
+            whatsappNumber: window.CONFIG.WHATSAPP_NUMBER
+        });
+        
+        // Detectar el archivo JSON a cargar
+        const jsonFile = detectLandingPage();
+        console.log('📄 Archivo JSON detectado:', jsonFile);
+        
+        // Intentar cargar datos
+        loadPageData(jsonFile);
+        
+        // Inicializar formulario (solo una vez)
+        setTimeout(() => {
+            captureUTMParameters(); // Capturar parámetros UTM primero
+            handleLeadForm();
+            setupPhoneValidation();
+            setupScrollAnimations();
+            initializeDeadManSwitch(); // Inicializar Dead Man's Switch
+        }, 500);
+    }
     
-    // Intentar cargar datos
-    loadPageData(jsonFile);
-    
-    // Inicializar formulario (solo una vez)
-    setTimeout(() => {
-        captureUTMParameters(); // Capturar parámetros UTM primero
-        handleLeadForm();
-        setupPhoneValidation();
-        setupScrollAnimations();
-        initializeDeadManSwitch(); // Inicializar Dead Man's Switch
-    }, 500); // Pequeño delay para asegurar que el DOM esté listo
-    
-    console.log('✅ Inicialización completada');
+    // Inicializar con verificación de configuración
+    initializeWithConfig();
 });
 
 // ========================================

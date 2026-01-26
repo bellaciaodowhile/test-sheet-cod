@@ -18,12 +18,13 @@ function getConfig() {
             DEBUG_MODE: true
         };
     } else {
+        // Configuración para producción (cupn.edu.mx)
         return {
-            APPS_SCRIPT_URL: '',
-            WHATSAPP_NUMBER: '1234567890',
-            HEALTHCHECK_URL: '', // Se configurará desde variables de entorno
+            APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbyZb8ZZNE6DdWXkM8h7LlRhcjnkawFA34CK_HDezy2ZK55CdMQ9j21bhVtGnq0cby4z/exec',
+            WHATSAPP_NUMBER: '1232132121',
+            HEALTHCHECK_URL: 'https://hc-ping.com/ddd271dc-e694-4bf7-8e84-b30073935fa9',
             API_TIMEOUT: 10000,
-            DEBUG_MODE: false
+            DEBUG_MODE: true // Activar debug para diagnosticar
         };
     }
 }

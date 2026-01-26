@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Conexión - CUPN</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .success { background: #d4edda; border-color: #c3e6cb; }
+        .error { background: #f8d7da; border-color: #f5c6cb; }
+        .warning { background: #fff3cd; border-color: #ffeaa7; }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #0056b3; }
+        .log {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 3px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Test de Conexión - CUPN</h1>
+        <p>Esta página te ayudará a diagnosticar problemas con el formulario.</p>
+        
+        <div class="test-section">
+            <h3>1. Configuración Detectada</h3>
+            <div id="config-info">Cargando...</div>
+        </div>
+        
+        <div class="test-section">
+            <h3>2. Test de Google Apps Script</h3>
+            <button onclick="testGoogleScript()">Probar Conexión a Google Sheets</button>
+            <div id="google-test-result"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>3. Test de Formulario Completo</h3>
+            <button onclick="testFullForm()">Probar Envío de Formulario</button>
+            <div id="form-test-result"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>4. Log de Diagnóstico</h3>
+            <button onclick="clearLog()">Limpiar Log</button>
+            <div id="diagnostic-log" class="log"></div>
+        </div>
+    </div>
+
+    <script>
+        // Configuración para cupn.edu.mx
+        const CONFIG = {
+            APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbyZb8ZZNE6DdWXkM8h7LlRhcjnkawFA34CK_HDezy2ZK55CdMQ9j21bhVtGnq0cby4z/exec',
+            WHATSAPP_NUMBER: '1232132121',
+            HEALTHCHECK_URL: 'https://hc-ping.com/ddd271dc-e694-4bf7-8e84-b30073935fa9',
+            API_TIMEOUT: 10000,
+            DEBUG_MODE: true
+        };
+
+        function log(message, type = 'info') {
+            const logDiv = document.getElementById('diagnostic-log');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = `[${timestamp}] ${type.toUpperCase()}: ${message}\n`;
+            logDiv.textContent += logEntry;
+            logDiv.scrollTop = logDiv.scrollHeight;
+            console.log(message);
+        }
+
+        function clearLog() {
+            document.getElementById('diagnostic-log').textContent = '';
+        }
+
+        function showConfigInfo() {
+            const configDiv = document.getElementById('config-info');
+            configDiv.innerHTML = `
+                <div class="success">
+                    <strong>✅ Configuración Cargada:</strong><br>
+                    • Apps Script URL: ${CONFIG.APPS_SCRIPT_URL ? '✅ Configurada' : '❌ No configurada'}<br>
+                    • WhatsApp: ${CONFIG.WHATSAPP_NUMBER}<br>
+                    • Healthcheck: ${CONFIG.HEALTHCHECK_URL ? '✅ Configurada' : '❌ No configurada'}<br>
+                    • Debug Mode: ${CONFIG.DEBUG_MODE ? 'Activado' : 'Desactivado'}<br>
+                    • Dominio actual: ${window.location.hostname}
+                </div>
+            `;
+        }
+
+        async function testGoogleScript() {
+            const resultDiv = document.getElementById('google-test-result');
+            resultDiv.innerHTML = '<div class="warning">🔄 Probando conexión...</div>';
+            
+            log('Iniciando test de Google Apps Script...');
+            
+            try {
+                const testData = {
+                    fecha: new Date().toLocaleDateString('es-ES'),
+                    hora: new Date().toLocaleTimeString('es-ES'),
+                    nombre: 'Test Usuario',
+                    telefono: '1234567890',
+                    email: 'test@cupn.edu.mx',
+                    carrera: 'Test Carrera',
+                    landing: 'Test Landing',
+                    utm_source: 'test',
+                    utm_medium: 'test',
+                    utm_campaign: 'test'
+                };
+
+                const params = new URLSearchParams(testData);
+                const urlWithParams = `${CONFIG.APPS_SCRIPT_URL}?${params.toString()}`;
+                
+                log(`URL de prueba: ${urlWithParams.substring(0, 100)}...`);
+
+                // Intentar con CORS primero
+                try {
+                    const corsResponse = await fetch(urlWithParams, {
+                        method: 'GET',
+                        mode: 'cors',
+                        redirect: 'follow',
+                        headers: {
+                            'Accept': 'application/json,text/plain,*/*'
+                        }
+                    });
+
+                    log(`Respuesta CORS: Status ${corsResponse.status}`);
+
+                    if (corsResponse.ok) {
+                        const responseText = await corsResponse.text();
+                        log(`Respuesta del servidor: ${responseText}`);
+                        
+                        resultDiv.innerHTML = `
+                            <div class="success">
+                                <strong>✅ Conexión exitosa con CORS</strong><br>
+                                Status: ${corsResponse.status}<br>
+                                Respuesta: ${responseText}
+                            </div>
+                        `;
+                        return;
+                    }
+                } catch (corsError) {
+                    log(`Error CORS: ${corsError.message}`);
+                }
+
+                // Fallback a no-cors
+                log('Intentando con modo no-cors...');
+                const response = await fetch(urlWithParams, {
+                    method: 'GET',
+                    mode: 'no-cors',
+                    redirect: 'follow'
+                });
+
+                log('Petición no-cors enviada');
+                
+                resultDiv.innerHTML = `
+                    <div class="warning">
+                        <strong>⚠️ Conexión enviada (no-cors)</strong><br>
+                        La petición se envió pero no podemos leer la respuesta debido a CORS.<br>
+                        Revisa Google Sheets para ver si llegaron los datos.
+                    </div>
+                `;
+
+            } catch (error) {
+                log(`Error crítico: ${error.message}`);
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        <strong>❌ Error de conexión</strong><br>
+                        ${error.message}<br><br>
+                        <strong>Posibles causas:</strong><br>
+                        • La URL del Apps Script no es correcta<br>
+                        • El Apps Script no está desplegado<br>
+                        • Problemas de CORS<br>
+                        • La nueva URI no está autorizada en Google
+                    </div>
+                `;
+            }
+        }
+
+        async function testFullForm() {
+            const resultDiv = document.getElementById('form-test-result');
+            resultDiv.innerHTML = '<div class="warning">🔄 Probando formulario completo...</div>';
+            
+            log('Iniciando test de formulario completo...');
+            
+            // Simular el proceso completo del formulario
+            try {
+                // 1. Test de configuración
+                if (!CONFIG.APPS_SCRIPT_URL) {
+                    throw new Error('APPS_SCRIPT_URL no configurada');
+                }
+                
+                log('✅ Configuración OK');
+                
+                // 2. Test de datos del formulario
+                const formData = {
+                    fecha: new Date().toLocaleDateString('es-ES'),
+                    hora: new Date().toLocaleTimeString('es-ES'),
+                    nombre: 'Usuario de Prueba',
+                    telefono: '5551234567',
+                    email: 'prueba@cupn.edu.mx',
+                    carrera: 'Ingeniería en Sistemas',
+                    landing: 'Landing Test',
+                    url: window.location.href,
+                    utm_source: 'test-source',
+                    utm_medium: 'test-medium',
+                    utm_campaign: 'test-campaign'
+                };
+                
+                log('✅ Datos del formulario preparados');
+                
+                // 3. Test de envío
+                const params = new URLSearchParams(formData);
+                const urlWithParams = `${CONFIG.APPS_SCRIPT_URL}?${params.toString()}`;
+                
+                const response = await fetch(urlWithParams, {
+                    method: 'GET',
+                    mode: 'no-cors',
+                    redirect: 'follow'
+                });
+                
+                log('✅ Petición enviada a Google Sheets');
+                
+                // 4. Test de WhatsApp
+                const mensaje = `Hola! Soy ${formData.nombre}, Me gustaría saber más sobre la carrera de ${formData.carrera}. Para recibir la información completa, les dejo mi contacto: 📧 ${formData.email} 📱 ${formData.telefono}`;
+                const whatsappUrl = `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`;
+                
+                log('✅ URL de WhatsApp generada');
+                
+                resultDiv.innerHTML = `
+                    <div class="success">
+                        <strong>✅ Test de formulario completado</strong><br><br>
+                        <strong>Datos enviados:</strong><br>
+                        • Nombre: ${formData.nombre}<br>
+                        • Email: ${formData.email}<br>
+                        • Teléfono: ${formData.telefono}<br>
+                        • Carrera: ${formData.carrera}<br><br>
+                        <strong>WhatsApp URL:</strong><br>
+                        <a href="${whatsappUrl}" target="_blank">Abrir WhatsApp</a><br><br>
+                        <em>Revisa Google Sheets para confirmar que llegaron los datos.</em>
+                    </div>
+                `;
+                
+            } catch (error) {
+                log(`Error en test de formulario: ${error.message}`);
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        <strong>❌ Error en test de formulario</strong><br>
+                        ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        // Inicializar al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            log('Página de diagnóstico cargada');
+            showConfigInfo();
+        });
+    </script>
+</body>
+</html>

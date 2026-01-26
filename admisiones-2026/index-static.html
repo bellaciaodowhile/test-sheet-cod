@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Meta tags SEO estáticos -->
+    <title>Centro Universitario Paso Del Norte - Ingenierías y Licenciaturas Online</title>
+    <meta name="description" content="Estudia Ingenierías y Licenciaturas 100% online con validez oficial SEP. Sin inscripción ni reinscripción. Colegiatura congelada desde el primer día.">
+    <meta name="keywords" content="universidad online, ingeniería online, licenciaturas online, educación superior, RVOE, SEP, estudios universitarios">
+    <meta name="author" content="Centro Universitario Paso Del Norte">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tudominio.com/admisiones-2026">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Ingenierías y Licenciaturas Online - CUPN">
+    <meta property="og:description" content="Deja de estudiar teoría. Entrénate para la industria real con programas 100% online y validez oficial.">
+    <meta property="og:image" content="https://tudominio.com/assets/images/og-image-a.jpg">
+    <meta property="og:url" content="https://tudominio.com/admisiones-2026">
+    <meta property="og:site_name" content="Centro Universitario Paso Del Norte">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ingenierías Online con Validez Oficial - CUPN">
+    <meta name="twitter:description" content="Programas diseñados para que subas de puesto. Sin rellenos y con validez oficial para trabajar ya.">
+    <meta name="twitter:image" content="https://tudominio.com/assets/images/twitter-image-a.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
+    <link rel="apple-touch-icon" href="./assets/images/apple-touch-icon.png">
+    
+    <!-- Preload recursos críticos -->
+    <link rel="preload" href="./assets/styles.min.css" as="style">
+    <link rel="preload" href="./assets/script.min.js" as="script">
+    <link rel="preload" href="https://code.jquery.com/jquery-3.6.0.min.js" as="script">
+    
+    <!-- Fuentes de sistema como fallback inmediato -->
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        .fonts-loaded body {
+            font-family: "Open Sans", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        /* Hero background estático */
+        #hero {
+            background-image: url('./assets/images/hero-a.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="./assets/styles.min.css">
+    
+    <!-- Google Fonts completamente asíncrono -->
+    <script>
+        // Cargar Google Fonts de forma asíncrona
+        const fontLink = document.createElement('link');
+        fontLink.href = 'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap';
+        fontLink.rel = 'stylesheet';
+        fontLink.onload = function() {
+            document.body.classList.add('fonts-loaded');
+        };
+        document.head.appendChild(fontLink);
+    </script>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Procesando información...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="./assets/images/logo-cupn.webp" alt="Centro Universitario Paso Del Norte" width="auto" height="auto">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">Admisiones abiertas 2026</div>
+                    <h1 class="hero-title">Deja de estudiar teoría. <br> Entrénate para la industria real.</h1>
+                    <p class="hero-subtitle">Ingenierías y licenciaturas Online diseñadas para que subas de puesto. <br> Sin rellenos y con validez oficial para trabajar ya.</p>
+                </div>
+                
+                <div class="hero-form">
+                    <div class="lead-form-container">
+                        <h2 class="form-title">Inicia tu ascenso profesional hoy:</h2>
+                        
+                        <form id="lead-form" class="lead-form" novalidate>
+                            <!-- Campos ocultos para UTM -->
+                            <input type="hidden" id="utm_source" name="utm_source" value="">
+                            <input type="hidden" id="utm_medium" name="utm_medium" value="">
+                            <input type="hidden" id="utm_campaign" name="utm_campaign" value="">
+                            
+                            <div class="form-group">
+                                <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" required aria-label="Nombre completo">
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required aria-label="Número de teléfono" inputmode="numeric">
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="Correo electrónico" required aria-label="Correo electrónico">
+                            </div>
+                            
+                            <div class="form-group">
+                                <select id="carrera" name="carrera" required aria-label="Carrera de interés">
+                                    <option value="">Carrera de Interés</option>
+                                    <option value="Ingeniería Agroindustrial y de Alimentos">Ingeniería Agroindustrial y de Alimentos</option>
+                                    <option value="Ingeniería Ambiental y Diseño de Energías Renovables">Ingeniería Ambiental y Diseño de Energías Renovables</option>
+                                    <option value="Ingeniería Eléctrica">Ingeniería Eléctrica</option>
+                                    <option value="Ingeniería en Gestión Empresarial">Ingeniería en Gestión Empresarial</option>
+                                    <option value="Ingeniería Industrial">Ingeniería Industrial</option>
+                                    <option value="Ingeniería en Manufactura">Ingeniería en Manufactura</option>
+                                    <option value="Ingeniería en Seguridad Cibernética">Ingeniería en Seguridad Cibernética</option>
+                                    <option value="Ingeniería en Sistemas">Ingeniería en Sistemas</option>
+                                    <option value="Licenciatura en Administración">Licenciatura en Administración</option>
+                                    <option value="Licenciatura en Contaduría Publica">Licenciatura en Contaduría Publica</option>
+                                    <option value="Licenciatura en Derecho">Licenciatura en Derecho</option>
+                                    <option value="Licenciatura en Diseño Grafico">Licenciatura en Diseño Grafico</option>
+                                    <option value="Licenciatura en Interpretación del Arte">Licenciatura en Interpretación del Arte</option>
+                                    <option value="Licenciatura en Logística y Aduanas">Licenciatura en Logística y Aduanas</option>
+                                    <option value="Licenciatura en Mercadotecnia">Licenciatura en Mercadotecnia</option>
+                                    <option value="Licenciatura en Recursos Humanos">Licenciatura en Recursos Humanos</option>
+                                    <option value="Licenciatura en Turismo">Licenciatura en Turismo</option>
+                                </select>
+                            </div>
+                            
+                            <button type="submit" class="whatsapp-btn" aria-describedby="form-note">
+                                <span class="whatsapp-icon" aria-hidden="true">
+                                    <img src="./assets/images/icon-whatsapp.webp" width="100%" height="100%" alt="Icon Whatsapp" role="presentation">
+                                </span>
+                                <span>Solicitar informes por Whatsapp</span>
+                            </button>
+                            
+                            <p id="form-note" class="form-note">*Respuesta en menos de 5 minutos.</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credentials Section -->
+    <section class="credentials">
+        <div class="container">
+            <div class="credentials-content">
+                <h2>Tu título <br> con Doble Respaldo Oficial</h2>
+                <p>Programas incorporados y validados ante la Federación (SEP) y el Gobierno del Estado.</p>
+                
+                <div class="logos-container">
+                    <img src="./assets/images/sep.webp" alt="SEP" class="credential-logo" width="auto" height="auto">
+                    <div class="logo-separator"></div>
+                    <img src="./assets/images/estate.webp" alt="Estate" class="credential-logo" width="auto" height="auto">
+                    <div class="logo-separator"></div>
+                    <img src="./assets/images/rvoe.webp" alt="RVOE" class="credential-logo" width="auto" height="auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div id="testimonials" class="testimonials">
+                <div class="testimonial-item testimonial-1" style="background-image: url('./assets/images/testimonials/1.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                    <div class="testimonial-content">
+                        <div class="testimonial-cite">"Me daba flojera la idea de estar 5 horas seguidas en un salón. Aquí todo es digital y directo. Estudio a mi ritmo y me da tiempo de trabajar para empezar a tener mis propios ingresos."</div>
+                        <div class="testimonial-name">Diego M., Ing. Industrial.</div>
+                    </div>
+                </div>
+                <div class="testimonial-item testimonial-2" style="background-image: url('./assets/images/testimonials/3.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                    <div class="testimonial-content">
+                        <div class="testimonial-cite">"Tenía años sin estudiar y cuidaba mucho el gasto. Me convenció que la mensualidad siempre es la misma, sin aumentos sorpresa. Es una plataforma muy noble para estudiar tranquila."</div>
+                        <div class="testimonial-name">Martha S., Administración.</div>
+                    </div>
+                </div>
+                <div class="testimonial-item testimonial-3" style="background-image: url('./assets/images/testimonials/2.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                    <div class="testimonial-content">
+                        <div class="testimonial-cite">"Mientras mis amigos están atorados en horarios de clase, la plataforma me permite trabajar tiempo completo. Así gano experiencia laboral real en la empresa y saco mi carrera al mismo tiempo."</div>
+                        <div class="testimonial-name">Lic. Karen B., Negocios.</div>
+                    </div>
+                </div>
+                <div class="testimonial-item testimonial-4" style="background-image: url('./assets/images/testimonials/4.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                    <div class="testimonial-content">
+                        <div class="testimonial-cite">"A mi edad busco seriedad, no perder el tiempo. El sistema de módulos me cayó perfecto para validar mis años de experiencia con un título oficial de forma directa."</div>
+                        <div class="testimonial-name">Ing. Ricardo L., Mantenimiento.</div>
+                    </div>
+                </div>
+                <div class="testimonial-item testimonial-5" style="background-image: url('./assets/images/testimonials/5.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                    <div class="testimonial-content">
+                        <div class="testimonial-cite">"No quería la típica rutina de horarios fijos. La plataforma me da libertad total: entro, descargo lo que necesito y listo. Sin maestros pasando lista, todo depende de mí."</div>
+                        <div class="testimonial-name">Sofía T., Contaduría.</div>
+                    </div>
+                </div>
+                <div class="testimonial-item testimonial-6" style="background-image: url('./assets/images/testimonials/6.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                    <div class="testimonial-content">
+                        <div class="testimonial-cite">"Hice cuentas y la verdad aquí conviene más. Te ahorras la inscripción y la reinscripción de cada cuatrimestre."</div>
+                        <div class="testimonial-name">Javier R., Ing. Sistemas.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon" aria-hidden="true">
+                        <img src="./assets/images/benefits/1-a.svg" alt="Icono Títulos que la industria respeta" width="80" height="80">
+                    </div>
+                    <h3>Títulos que <br> la industria respeta</h3>
+                    <p>Programas con RVOE Federal diseñados para el mercado laboral real. Tu título tiene peso para conseguir ese ascenso o mejor sueldo.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon" aria-hidden="true">
+                        <img src="./assets/images/benefits/2-a.svg" alt="Icono Tu dinero en tu futuro, no en trámites" width="80" height="80">
+                    </div>
+                    <h3>Tu dinero en tu futuro, <br> no en trámites</h3>
+                    <p>La única opción verdaderamente inteligente: 0% Inscripción y 0% Reinscripción. Lo que ahorras en cuotas, inviértelo en ti.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon" aria-hidden="true">
+                        <img src="./assets/images/benefits/3-a.svg" alt="Icono Estudiar sin renunciar a tu vida" width="80" height="80">
+                    </div>
+                    <h3>Estudiar <br> sin renunciar a tu vida</h3>
+                    <p>Sabemos que trabajas. Nuestra plataforma y docentes se adaptan a tus turnos y horarios, no al revés. Soporte humano real, no robots.</p>
+                </div>
+            </div>
+            
+            <div class="benefits-cta">
+                <a href="#hero" class="cta-link">Empezar solicitud arriba</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>Copyright © 2024 CUPN. | <a href='./assets/docs/aviso-privacidad-cupn.pdf' target='_blank'>Aviso de Privacidad</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="./config.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer></script>
+    <script src="./assets/script-static.min.js" defer></script>
+    
+    <!-- Slick Carousel CSS - Carga asíncrona -->
+    <script>
+        const slickCSS = document.createElement('link');
+        slickCSS.rel = 'preload';
+        slickCSS.href = 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css';
+        slickCSS.as = 'style';
+        slickCSS.onload = function() { this.rel = 'stylesheet'; };
+        document.head.appendChild(slickCSS);
+        
+        const slickThemeCSS = document.createElement('link');
+        slickThemeCSS.rel = 'preload';
+        slickThemeCSS.href = 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css';
+        slickThemeCSS.as = 'style';
+        slickThemeCSS.onload = function() { this.rel = 'stylesheet'; };
+        document.head.appendChild(slickThemeCSS);
+    </script>
+</body>
+</html>
