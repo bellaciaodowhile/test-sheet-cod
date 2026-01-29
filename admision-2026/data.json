@@ -1,18 +1,18 @@
 {
   "seo": {
-    "title": "Centro Universitario Paso Del Norte - Tu Futuro Profesional Online",
-    "description": "Tu Ingeniería o Licenciatura Online con Doble Respaldo Oficial. 0% Inscripción, 0% Reinscripción y colegiatura congelada desde el primer día.",
+    "title": "Admisiones 2026 Abiertas | CUPN",
+    "description": "Estudia tu Ingeniería o Licenciatura 100% Online con RVOE. ¡Aplica hoy sin costo de inscripción!",
     "keywords": "universidad online, educación superior, ingeniería online, licenciaturas online, RVOE, SEP, estudios universitarios, colegiatura congelada",
     "author": "Centro Universitario Paso Del Norte",
     "robots": "index, follow",
-    "canonical": "https://tudominio.com/admision-2026",
+    "canonical": "https://cupn.edu.mx/admision-2026",
     "ogTitle": "Universidad Online con Doble Respaldo Oficial - CUPN",
     "ogDescription": "La decisión inteligente: 0% Inscripción, 0% Reinscripción y garantía de colegiatura congelada desde el primer día.",
-    "ogImage": "https://tudominio.com/assets/images/og-image-b.jpg",
-    "ogUrl": "https://tudominio.com/admision-2026",
+    "ogImage": "https://cupn.edu.mx/assets/images/hero-a.webp",
+    "ogUrl": "https://cupn.edu.mx/admision-2026",
     "twitterTitle": "Universidad Online - Colegiatura Congelada - CUPN",
     "twitterDescription": "Tu Ingeniería o Licenciatura Online con Doble Respaldo Oficial. Sin costos ocultos ni aumentos sorpresa.",
-    "twitterImage": "https://tudominio.com/assets/images/twitter-image-b.jpg"
+    "twitterImage": "https://cupn.edu.mx/assets/images/hero-a.webp"
   },
   "pageTitle": "Centro Universitario Paso Del Norte",
   "logo": {
@@ -22,12 +22,12 @@
   "hero": {
     "badge": "Admisiones abiertas 2026",
     "title": "Tu Ingeniería o Licenciatura Online <br> con Doble Respaldo Oficial.",
-    "subtitle": "La decisión inteligente: 0% Inscripción, 0% Reinscripción <br> y garantía de colegiatura congelada desde el primer día.",
+    "subtitle": "La decisión inteligente: Inscripción y reinscripción a costo $0 con garantía de colegiatura congelada desde el primer día.",
     "imageAlt": "Ejecutivo profesional en oficina moderna",
     "backgroundImage": "assets/images/hero-b.webp"
   },
   "form": {
-    "titleForm": "Asegura tu lugar con $0 inicial:",
+    "titleForm": "<div class='title-form-mini'>Activa tu beca de inscripción <span>costo $0 aquí:</span></div>",
     "buttonText": "Solicitar informes por Whatsapp",
     "note": "*Sin plazos forzosos. Trámite directo.",
     "careers": [

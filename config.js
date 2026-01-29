@@ -22,7 +22,7 @@ function getConfig() {
         console.log('🔧 Usando configuración de desarrollo local');
         return {
             APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbyZb8ZZNE6DdWXkM8h7LlRhcjnkawFA34CK_HDezy2ZK55CdMQ9j21bhVtGnq0cby4z/exec',
-            WHATSAPP_NUMBER: '1232132121',
+            WHATSAPP_NUMBER: '5216563513024',
             HEALTHCHECK_URL: 'https://hc-ping.com/ddd271dc-e694-4bf7-8e84-b30073935fa9', // Se configurará después
             API_TIMEOUT: 10000,
             DEBUG_MODE: true
@@ -32,7 +32,7 @@ function getConfig() {
         console.warn('⚠️ No se pudieron cargar las variables de entorno del servidor');
         return {
             APPS_SCRIPT_URL: '',
-            WHATSAPP_NUMBER: '1234567890',
+            WHATSAPP_NUMBER: '5216563513024',
             HEALTHCHECK_URL: '', // Se configurará desde variables de entorno
             API_TIMEOUT: 10000,
             DEBUG_MODE: false
@@ -59,15 +59,10 @@ function initializeConfig() {
     }
 }
 
-// Función para logging seguro
+// Función para logging seguro (silenciosa en producción)
 window.safeLog = function(message, data = null) {
-    if (window.CONFIG?.DEBUG_MODE) {
-        if (data) {
-            console.log(message, data);
-        } else {
-            console.log(message);
-        }
-    }
+    // Función silenciosa - no muestra logs
+    return;
 };
 
 // Inicializar cuando el DOM esté listo

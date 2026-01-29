@@ -5,26 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Meta tags dinámicos - se llenan desde JSON -->
-    <title id="page-title">Landing Page Educativa</title>
-    <meta name="description" content="" id="meta-description">
-    <meta name="keywords" content="" id="meta-keywords">
-    <meta name="author" content="" id="meta-author">
+    <title id="page-title">Centro Universitario Paso Del Norte - Ingenierías y Licenciaturas Online</title>
+    <meta name="description" content="Estudia Ingenierías y Licenciaturas 100% online con validez oficial SEP. Sin inscripción ni reinscripción. Colegiatura congelada desde el primer día." id="meta-description">
+    <meta name="keywords" content="universidad online, ingeniería online, licenciaturas online, educación superior, RVOE, SEP, estudios universitarios" id="meta-keywords">
+    <meta name="author" content="Centro Universitario Paso Del Norte" id="meta-author">
     <meta name="robots" content="index, follow" id="meta-robots">
-    <link rel="canonical" href="" id="canonical-url">
+    <link rel="canonical" href="https://cupn.edu.mx/landing-a" id="canonical-url">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="" id="og-title">
-    <meta property="og:description" content="" id="og-description">
-    <meta property="og:image" content="" id="og-image">
-    <meta property="og:url" content="" id="og-url">
+    <meta property="og:title" content="Ingenierías y Licenciaturas Online - CUPN" id="og-title">
+    <meta property="og:description" content="Deja de estudiar teoría. Entrénate para la industria real con programas 100% online y validez oficial." id="og-description">
+    <meta property="og:image" content="https://cupn.edu.mx/assets/images/hero-a.webp" id="og-image">
+    <meta property="og:url" content="https://cupn.edu.mx/landing-a" id="og-url">
     <meta property="og:site_name" content="Centro Universitario Paso Del Norte">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="" id="twitter-title">
-    <meta name="twitter:description" content="" id="twitter-description">
-    <meta name="twitter:image" content="" id="twitter-image">
+    <meta name="twitter:title" content="Ingenierías Online con Validez Oficial - CUPN" id="twitter-title">
+    <meta name="twitter:description" content="Programas diseñados para que subas de puesto. Sin rellenos y con validez oficial para trabajar ya." id="twitter-description">
+    <meta name="twitter:image" content="https://cupn.edu.mx/assets/images/hero-a.webp" id="twitter-image">
+    
+    <!-- ========================================
+         TRACKING PIXELS - COLOCAR AQUÍ
+         ========================================
+         
+         Agregar aquí los códigos de tracking:
+         
+         1. Meta Pixel (Facebook):
+            - Meta Pixel base code
+            - Eventos de conversión
+         
+         2. Google Pixel (Google Ads):
+            - Google Ads conversion tracking
+            - Google Analytics 4 (GA4)
+            - Google Tag Manager (GTM)
+         
+         3. TikTok Pixel:
+            - TikTok Pixel base code
+            - Eventos de conversión TikTok
+         
+         Ejemplo de estructura:
+         <script>
+           // Meta Pixel code aquí
+         </script>
+         
+         <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+         <script>
+           // Google Analytics code aquí
+         </script>
+         
+         <script>
+           // TikTok Pixel code aquí
+         </script>
+         
+         ======================================== -->
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
@@ -82,7 +117,7 @@
             if (isDevelopment) {
                 return {
                     APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbyZb8ZZNE6DdWXkM8h7LlRhcjnkawFA34CK_HDezy2ZK55CdMQ9j21bhVtGnq0cby4z/exec',
-                    WHATSAPP_NUMBER: '1232132121',
+                    WHATSAPP_NUMBER: '5216563513024',
                     API_TIMEOUT: 10000,
                     DEBUG_MODE: true
                 };
@@ -181,7 +216,28 @@
                                 <div class="input-group">
                                     <label for="carrera" class="sr-only">Carrera de interés</label>
                                     <select id="carrera" name="carrera" required aria-required="true">
-                                        <option value="">Carrera de Interés</option>
+                                        <option value="">Selecciona tu carrera de interés</option>
+                                        <optgroup label="🎓 Ingenierías">
+                                            <option value="Ingeniería Agroindustrial y de Alimentos">Ingeniería Agroindustrial y de Alimentos</option>
+                                            <option value="Ingeniería Ambiental y Diseño de Energías Renovables">Ingeniería Ambiental y Diseño de Energías Renovables</option>
+                                            <option value="Ingeniería Eléctrica">Ingeniería Eléctrica</option>
+                                            <option value="Ingeniería en Gestión Empresarial">Ingeniería en Gestión Empresarial</option>
+                                            <option value="Ingeniería Industrial">Ingeniería Industrial</option>
+                                            <option value="Ingeniería en Manufactura">Ingeniería en Manufactura</option>
+                                            <option value="Ingeniería en Seguridad Cibernética">Ingeniería en Seguridad Cibernética</option>
+                                            <option value="Ingeniería en Sistemas">Ingeniería en Sistemas</option>
+                                        </optgroup>
+                                        <optgroup label="📚 Licenciaturas">
+                                            <option value="Licenciatura en Administración">Licenciatura en Administración</option>
+                                            <option value="Licenciatura en Contaduría Publica">Licenciatura en Contaduría Pública</option>
+                                            <option value="Licenciatura en Derecho">Licenciatura en Derecho</option>
+                                            <option value="Licenciatura en Diseño Grafico">Licenciatura en Diseño Gráfico</option>
+                                            <option value="Licenciatura en Interpretación del Arte">Licenciatura en Interpretación del Arte</option>
+                                            <option value="Licenciatura en Logística y Aduanas">Licenciatura en Logística y Aduanas</option>
+                                            <option value="Licenciatura en Mercadotecnia">Licenciatura en Mercadotecnia</option>
+                                            <option value="Licenciatura en Recursos Humanos">Licenciatura en Recursos Humanos</option>
+                                            <option value="Licenciatura en Turismo">Licenciatura en Turismo</option>
+                                        </optgroup>
                                     </select>
                                 </div>
                             </div>
